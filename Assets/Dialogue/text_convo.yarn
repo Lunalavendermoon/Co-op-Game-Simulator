@@ -1,0 +1,11 @@
+﻿title: Start
+---
+
+<<textmessage "Username" "bro we shud play the new game that just came out together">>
+<<textmessage "You" "wait what game">>
+<<textmessage "Username" "GTB6!">>
+
+-> Sure, I have time
+-> No, gotta do hw
+
+===

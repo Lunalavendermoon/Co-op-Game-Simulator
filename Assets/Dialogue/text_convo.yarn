@@ -7,6 +7,13 @@
 <<textmessage "You" "lemme know if you need any help">>
 <<textmessage "Username" "ok">>
 
+<<textmessage "Username" "ok1">>
+<<textmessage "Username" "ok2">>
+<<textmessage "Username" "ok3">>
+<<textmessage "Username" "ok4">>
+<<textmessage "Username" "ok5">>
+<<textmessage "Username" "ok6">>
+
 -> Ok, I'll keep playing
 -> Try asking them if they need help
 

@@ -6,6 +6,9 @@
 <<textmessage "You" "well im alr in just waiting for u">>
 <<textmessage "You" "lemme know if you need any help">>
 <<textmessage "Username" "ok">>
+<<textmessage "Username" "here's more dialogue">>
+<<textmessage "Username" "testing some more">>
+<<textmessage "Username" "im just going to type a very long sentence but I will keep trying to make it very long and even longer hopefully it goes to the second line">>
 
 -> Ok, I'll keep playing
 -> Try asking them if they need help

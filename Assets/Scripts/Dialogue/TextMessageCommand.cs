@@ -14,7 +14,7 @@ public class TextMessageCommand : MonoBehaviour
 
     void Start()
     {
-        betweenMessages = GetComponent<VerticalLayoutGroup>().spacing;
+        betweenMessages = messageContainer.GetComponent<VerticalLayoutGroup>().spacing;
     }
 
     public void SpawnMessage(string sender, string message)

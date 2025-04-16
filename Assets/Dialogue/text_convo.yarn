@@ -1,10 +1,10 @@
 ﻿title: Start
 ---
 
-<<textmessage "You" "bro are you in the game yet">>
-<<textmessage "Username" "im just going to type a very long sentence but I will keep trying to make it very long and even longer hopefully it goes to the second line">>
-<<textmessage "Username" "wait im trying to get in but theres tech issues">>
-<<textmessage "You" "well im alr in just waiting for u">>
+<<textmessageimage "You" "bro are you in the game yet" "testingimg_1">>
+<<textmessageimage "Username" "im just going to type a very long sentence but I will keep trying to make it very long and even longer hopefully it goes to the second line" "testingimg_1">>
+<<textmessageimage "Username" "wait im trying to get in but theres tech issues" "testingimg_2">>
+<<textmessageimage "You" "well im alr in just waiting for u" "testingimg_3">>
 <<textmessage "You" "lemme know if you need any help">>
 <<textmessage "Username" "ok">>
 <<textmessage "Username" "here's more dialogue">>

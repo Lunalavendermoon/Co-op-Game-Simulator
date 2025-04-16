@@ -22,6 +22,21 @@ public class TextMessageCommand : MonoBehaviour
         var bubble = Instantiate(messageBubblePrefab, messageContainer);
         bubble.GetComponent<TextMessageBubble>().SetMessage(sender, message);
 
+        ResizeContainer(bubble);
+    }
+
+    public void SpawnImageMessage(string sender, string message, string filename) {
+        var bubble = Instantiate(messageBubblePrefab, messageContainer);
+        bubble.GetComponent<TextMessageBubble>().SetMessage(sender, message);
+
+        bubble.GetComponent<TextMessageBubble>().SetImage(filename);
+        
+        ResizeContainer(bubble);
+    }
+
+    void ResizeContainer(GameObject bubble) {
+        bubble.GetComponent<TextMessageBubble>().UpdateMessageHeight();
+
         float messageHeight = bubble.GetComponent<RectTransform>().rect.height;
         
         // Resizing the container extends it in both directions, so we must reposition it accordingly

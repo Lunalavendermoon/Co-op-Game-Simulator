@@ -1853,7 +1853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 275
+    m_Left: 260
     m_Right: 0
     m_Top: 50
     m_Bottom: 0

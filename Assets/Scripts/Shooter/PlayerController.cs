@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public GameObject bulletPrefab;
+    public GameObject bulletPrefab, laserPrefab;
     public List<Transform> firePoints;
     public float shootInterval = 0.5f;
     private float shootTimer;
@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
 
+    private string shootingType = "";
     void Start()
     {
         currentHealth = maxHealth;
@@ -23,19 +24,46 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        float moveX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+        float moveX = 0f;
+        if (Input.GetKey(KeyCode.A))
+        {
+            moveX = -moveSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            moveX = moveSpeed * Time.deltaTime;
+        }
         transform.Translate(moveX, 0, 0);
 
-        shootTimer += Time.deltaTime;
-        if (shootTimer >= shootInterval)
-        {
-            if(shootMore) {
-                Shoot(2);
+        if (Input.GetKey(KeyCode.B)) {
+            if (shootingType == "") {
+                shootingType = "laser";
             }
-            else{ 
-                Shoot(1);
+            else {
+                
+                GameObject laser = GameObject.FindWithTag("Bullet");
+                if (laser != null)
+                {
+                    Destroy(laser);
+                }
+                shootingType = "";
             }
-            shootTimer = 0f;
+        }
+        if (shootingType == ""){
+            shootTimer += Time.deltaTime;
+            if (shootTimer >= shootInterval)
+            {
+                if(shootMore) {
+                    Shoot(2);
+                }
+                else{ 
+                    Shoot(1);
+                }
+                shootTimer = 0f;
+            }
+        }
+        else {
+            ShootOnce();
         }
     }
 
@@ -58,7 +86,13 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    public void TakeDamage(int amount)
+    void ShootOnce() {
+        if (GameObject.Find("Laser(Clone)") == null) {
+            Instantiate(laserPrefab, firePoints[0].position + Vector3.up * 6f, Quaternion.identity, transform);
+        }
+    }
+
+    public void LoseHealth(int amount)
     {
         currentHealth -= amount;
         healthBar.SetHealth(currentHealth);
@@ -72,5 +106,9 @@ public class PlayerController : MonoBehaviour
 
     public void ShootMore() {
         shootMore = true;
+    }
+
+    public void SetShootInterval(int i) {
+        shootInterval = i;
     }
 }

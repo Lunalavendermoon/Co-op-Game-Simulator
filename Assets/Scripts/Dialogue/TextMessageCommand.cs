@@ -1,3 +1,5 @@
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
@@ -8,8 +10,6 @@ public class TextMessageCommand : MonoBehaviour
     public RectTransform messageContainer;
     public ScrollRect scrollRect;
 
-    // the height of a single text message
-    public float messageHeight;
     float betweenMessages;
 
     void Start()
@@ -22,12 +22,13 @@ public class TextMessageCommand : MonoBehaviour
         var bubble = Instantiate(messageBubblePrefab, messageContainer);
         bubble.GetComponent<TextMessageBubble>().SetMessage(sender, message);
 
+        float messageHeight = bubble.GetComponent<RectTransform>().rect.height;
         
         // Resizing the container extends it in both directions, so we must reposition it accordingly
         Vector2 newPos = new Vector2(messageContainer.localPosition.x,
-                                        messageContainer.localPosition.y + messageHeight/2 + betweenMessages);
+                                        messageContainer.localPosition.y + messageHeight * 5 + betweenMessages);
 
-        messageContainer.sizeDelta = new Vector2(messageContainer.sizeDelta.x, messageContainer.sizeDelta.y + messageHeight);
+        messageContainer.sizeDelta = new Vector2(messageContainer.sizeDelta.x, messageContainer.sizeDelta.y + messageHeight + betweenMessages);
         messageContainer.localPosition = newPos;
 
         scrollRect.normalizedPosition = new Vector2(0, 0);

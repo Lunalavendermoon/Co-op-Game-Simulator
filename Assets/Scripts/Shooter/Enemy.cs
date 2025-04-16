@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
         {
             if (player != null)
             {
-                player.TakeDamage(1);
+                player.LoseHealth(1);
             }
             Destroy(gameObject);
         }

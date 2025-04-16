@@ -1,12 +1,15 @@
+using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
     public float speed = 10f;
 
+    public string type = "";
+
     void Update()
     {
-        transform.Translate(Vector3.up * speed * Time.deltaTime);
+        if (type == "") {transform.Translate(Vector3.up * speed * Time.deltaTime);}
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -14,7 +17,15 @@ public class Bullet : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             Destroy(other.gameObject);
+            if (type == ""){
+            Destroy(gameObject);}
+        }
+        if (other.CompareTag("Obstacle") && type == "") {
             Destroy(gameObject);
         }
+    }
+
+    public void SetType(string i) {
+        type = i;
     }
 }

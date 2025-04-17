@@ -136,19 +136,19 @@ public class DialogueOption : MonoBehaviour
     {
         if (input == 1)
         {
-            return "��";
+            return "up";
         }
         else if (input == 2)
         {
-            return "��";
+            return "down";
         }
         else if (input == 3)
         {
-            return "��";
+            return "left";
         }
         else if (input == 4)
         {
-            return "��";
+            return "right";
         }
         else
         {

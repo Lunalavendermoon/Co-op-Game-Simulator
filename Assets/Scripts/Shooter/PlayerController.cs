@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= amount;
         healthBar.SetHealth(currentHealth);
-
+        Debug.Log("player lost health");
         if (currentHealth <= 0)
         {
             Destroy(gameObject);

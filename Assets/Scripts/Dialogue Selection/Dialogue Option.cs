@@ -100,7 +100,7 @@ public class DialogueOption : MonoBehaviour
 
         else if (Input.GetKeyDown(KeyCode.Space))
         {
-            ShowSelection(new string[0]);
+            ShowSelection();
         }
 
         if (!optionPrefab.activeSelf)
@@ -136,19 +136,19 @@ public class DialogueOption : MonoBehaviour
     {
         if (input == 1)
         {
-            return "¡ü";
+            return "ï¿½ï¿½";
         }
         else if (input == 2)
         {
-            return "¡ý";
+            return "ï¿½ï¿½";
         }
         else if (input == 3)
         {
-            return "¡û";
+            return "ï¿½ï¿½";
         }
         else if (input == 4)
         {
-            return "¡ú";
+            return "ï¿½ï¿½";
         }
         else
         {
@@ -252,9 +252,9 @@ public class DialogueOption : MonoBehaviour
 
 
     [YarnCommand("setOptionActive")]
-    public void ShowSelection(string[] parameters)
+    public void ShowSelection()
     {
-        Debug.Log("Yarn µ÷ÓÃÁË debuglog ³É¹¦£¡");
+        Debug.Log("Yarn ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ debuglog ï¿½É¹ï¿½ï¿½ï¿½");
         optionPrefab.SetActive(true);
     }
 }

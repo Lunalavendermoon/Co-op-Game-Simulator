@@ -5025,7 +5025,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3828640051427115481, guid: 49109c7e4da8a8b44bab4c49502a622e, type: 3}
       propertyPath: m_TagString
-      value: player
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4235972193914214285, guid: 49109c7e4da8a8b44bab4c49502a622e, type: 3}
       propertyPath: m_SortingOrder

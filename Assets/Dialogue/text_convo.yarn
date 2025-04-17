@@ -1,6 +1,5 @@
 ﻿title: Start
 ---
-
 <<textmessageimage "You" "bro are you in the game yet" "testingimg_1">>
 <<textmessageimage "Username" "wait im trying to get in but theres tech issues" "testingimg_2">>
 <<textmessageimage "You" "well im alr in just waiting for u" "testingimg_3">>
@@ -11,13 +10,22 @@
 
 <<setOptionActive>>
 
+===
+
+title: KeepPlaying
+---
+<<textmessage "You" "ok ill keep playing">>
+
 <<textmessage "Username" "im just going to type a very long sentence but I will keep trying to make it very long and even longer hopefully it goes to the second line">>
 <<textmessage "Username" "here's more dialogue">>
 <<textmessage "Username" "testing some more">>
 <<textmessage "You" "here's more dialogue">>
 <<textmessage "You" "test test">>
 
--> Ok, I'll keep playing
--> Try asking them if they need help
+===
+
+title: AskHelp
+---
+<<textmessage "You" "bro do u need help">>
 
 ===

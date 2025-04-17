@@ -252,9 +252,10 @@ public class DialogueOption : MonoBehaviour
 
 
     [YarnCommand("setOptionActive")]
-    public void ShowSelection()
+    public static void ShowSelection()
     {
         Debug.Log("Yarn ������ debuglog �ɹ���");
-        optionPrefab.SetActive(true);
+        var dialogueOption = GameObject.Find("/Dialogue/Canvas/Dialogue Option");
+        dialogueOption.SetActive(true);
     }
 }

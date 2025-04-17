@@ -8,6 +8,9 @@
 <<textmessage "Username" "ok">>
 <<textmessage "Username" "here's more dialogue">>
 <<textmessage "Username" "testing some more">>
+
+<<setOptionActive DialogueOptionManager>>
+
 <<textmessage "Username" "im just going to type a very long sentence but I will keep trying to make it very long and even longer hopefully it goes to the second line">>
 <<textmessage "Username" "here's more dialogue">>
 <<textmessage "Username" "testing some more">>

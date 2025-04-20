@@ -805,6 +805,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 508732051}
     m_Modifications:
     - target: {fileID: 562713484947181330, guid: 8a90ec1e1379b4eb1850e83fb23feb9e, type: 3}
+      propertyPath: badWordsFile
+      value: 
+      objectReference: {fileID: 4900000, guid: 3e150c547d5c9474dae0fd52e029c978, type: 3}
+    - target: {fileID: 562713484947181330, guid: 8a90ec1e1379b4eb1850e83fb23feb9e, type: 3}
       propertyPath: usernameInput
       value: 
       objectReference: {fileID: 408445954}

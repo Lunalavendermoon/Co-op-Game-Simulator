@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,9 +17,15 @@ public class TextMessageCommand : MonoBehaviour
     public TMP_InputField usernameInput;
     public GameObject usernameInvalidText;
 
+    public TextAsset badWordsFile;
+
+    public int usernameCharLimit;
+
     string playerName = "You";
 
     float betweenMessages;
+
+    HashSet<string> badWords;
 
     void Start()
     {
@@ -26,6 +34,9 @@ public class TextMessageCommand : MonoBehaviour
         if (usernameInvalidText != null) {
             usernameInvalidText.SetActive(false);
         }
+
+        badWords = new HashSet<string>(Regex.Split(badWordsFile.text, "\n|\r|\r\n"));
+        badWords.Remove(""); // sometimes the last line gets read as an empty string
     }
 
     public void SpawnMessage(string sender, string message)
@@ -61,15 +72,27 @@ public class TextMessageCommand : MonoBehaviour
     }
 
     public void SetPlayerName() {
-        // TODO check for swears
-        if (usernameInput.text.Contains("bad word")) {
-            SetUsernameInvalidText("No bad words allowed >:(");
-        } else if (usernameInput.text.Length == 0) {
+        string userInput = usernameInput.text;
+        if (userInput.Length == 0) {
             SetUsernameInvalidText("Username can't be empty >:(");
+        } else if (userInput.Length > usernameCharLimit) {
+            SetUsernameInvalidText("Username is too long (" + usernameCharLimit + " characters max) >:(");
+        } else if (HasBadWord(userInput.ToLower())) {
+            SetUsernameInvalidText("No bad words allowed >:(");
         } else {
-            playerName = usernameInput.text;
+            playerName = userInput;
             dialogueRunner.StartDialogue("Start");
         }
+    }
+
+    bool HasBadWord(string s) {
+        foreach (string badWord in badWords) {
+            if (s.Contains(badWord.ToLower())) {
+                Debug.Log(s + " " + badWord.ToLower());
+                return true;
+            }
+        }
+        return false;
     }
 
     void SetUsernameInvalidText(string warning) {

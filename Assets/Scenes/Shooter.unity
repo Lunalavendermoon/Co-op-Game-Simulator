@@ -5053,6 +5053,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 830133652}
     - target: {fileID: 8015552292327769896, guid: 49109c7e4da8a8b44bab4c49502a622e, type: 3}
+      propertyPath: laserPrefab
+      value: 
+      objectReference: {fileID: 6818060655371291409, guid: fd2ce5ea4598b9945857a7b344e0be53, type: 3}
+    - target: {fileID: 8015552292327769896, guid: 49109c7e4da8a8b44bab4c49502a622e, type: 3}
       propertyPath: currentHealth
       value: 5
       objectReference: {fileID: 0}

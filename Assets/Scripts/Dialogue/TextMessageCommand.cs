@@ -33,10 +33,9 @@ public class TextMessageCommand : MonoBehaviour
 
         if (usernameInvalidText != null) {
             usernameInvalidText.SetActive(false);
+            badWords = new HashSet<string>(Regex.Split(badWordsFile.text, "\n|\r|\r\n"));
+            badWords.Remove(""); // sometimes the last line gets read as an empty string
         }
-
-        badWords = new HashSet<string>(Regex.Split(badWordsFile.text, "\n|\r|\r\n"));
-        badWords.Remove(""); // sometimes the last line gets read as an empty string
     }
 
     public void SpawnMessage(string sender, string message)

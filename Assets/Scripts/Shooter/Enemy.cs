@@ -3,10 +3,13 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed = 2f;
+    public int maxHealth = 3;
+    private int currentHealth;
     private PlayerController player;
 
     void Start()
     {
+        currentHealth = maxHealth;
         player = GameObject.FindWithTag("Player")?.GetComponent<PlayerController>();
     }
 
@@ -15,6 +18,14 @@ public class Enemy : MonoBehaviour
         transform.Translate(Vector3.down * speed * Time.deltaTime);
     }
 
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Obstacle"))
@@ -28,8 +39,12 @@ public class Enemy : MonoBehaviour
 
         if (other.CompareTag("Bullet"))
         {
-            Destroy(gameObject);
-            Destroy(other.gameObject);
+            Bullet bullet = other.GetComponent<Bullet>();
+            if (bullet != null)
+            {
+                TakeDamage(bullet.damage);
+                Destroy(other.gameObject);
+            }
         }
     }
 

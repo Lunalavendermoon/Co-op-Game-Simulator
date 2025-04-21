@@ -35,20 +35,6 @@ public class PlayerController : MonoBehaviour
         }
         transform.Translate(moveX, 0, 0);
 
-        if (Input.GetKey(KeyCode.B)) {
-            if (shootingType == "") {
-                shootingType = "laser";
-            }
-            else {
-                
-                GameObject laser = GameObject.FindWithTag("Bullet");
-                if (laser != null)
-                {
-                    Destroy(laser);
-                }
-                shootingType = "";
-            }
-        }
         if (shootingType == ""){
             shootTimer += Time.deltaTime;
             if (shootTimer >= shootInterval)
@@ -108,7 +94,17 @@ public class PlayerController : MonoBehaviour
         shootMore = true;
     }
 
-    public void SetShootInterval(int i) {
-        shootInterval = i;
+    public void LaserController() {
+        if (shootingType == "") {
+            shootingType = "laser";
+        }
+        else {
+            GameObject laser = GameObject.FindWithTag("Bullet");
+            if (laser != null)
+            {
+                Destroy(laser);
+            }
+            shootingType = "";
+        }
     }
 }

@@ -24,7 +24,7 @@ public class ShooterManager : MonoBehaviour
         }
         else {
             Enemy.ApplyToAllEnemies(e => e.speed = 2.5f);
-            spawner.spawnInterval = 2f;
+            spawner.spawnInterval = 1f;
         }
     }
 }

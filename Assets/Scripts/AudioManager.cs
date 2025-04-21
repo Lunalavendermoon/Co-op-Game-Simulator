@@ -50,7 +50,7 @@ public class AudioManager : MonoBehaviour
     {
         switch (clip)
         {
-            case "game": bgmSource.clip = game; bgmSource.volume = 0.3f; break;
+            case "game": bgmSource.clip = game; bgmSource.volume = 0.5f; break;
             default: return;
         }
 

@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public static List<Enemy> AllEnemies = new List<Enemy>();
     public float speed = 2f;
     public int maxHealth = 3;
     private int currentHealth;
@@ -9,6 +11,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        AllEnemies.Add(this);
         currentHealth = maxHealth;
         player = GameObject.FindWithTag("Player")?.GetComponent<PlayerController>();
     }
@@ -48,8 +51,20 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public static void ApplyToAllEnemies(System.Action<Enemy> action)
+    {
+        foreach (var enemy in AllEnemies)
+        {
+            if (enemy != null) // Prevent null errors if any enemies were destroyed
+            {
+                action(enemy);
+            }
+        }
+    }
+
     void OnDestroy()
     {
         AudioManager.Instance.PlaySFX("pew");
+        AllEnemies.Remove(this);
     }
 }

@@ -8,13 +8,13 @@ public class PlayerController : MonoBehaviour
     public List<Transform> firePoints;
     public float shootInterval = 0.5f;
     private float shootTimer;
-    private bool shootMore = false;
+    public int shootAmt = 1;
 
     public int maxHealth = 5;
     public int currentHealth;
     public HealthBar healthBar;
 
-    private string shootingType = "";
+    public string shootingType = "";
     void Start()
     {
         currentHealth = maxHealth;
@@ -39,17 +39,22 @@ public class PlayerController : MonoBehaviour
             shootTimer += Time.deltaTime;
             if (shootTimer >= shootInterval)
             {
-                if(shootMore) {
+                if(shootAmt == 2) {
                     Shoot(2);
                 }
-                else{ 
+                else if (shootAmt == 3) { 
+                    Shoot(3);
+                }
+                else {
                     Shoot(1);
                 }
                 shootTimer = 0f;
             }
         }
         else {
-            ShootOnce();
+            if (GameObject.Find("Laser(Clone)") == null) {
+                Instantiate(laserPrefab, firePoints[0].position + Vector3.up * 6f, Quaternion.identity, transform);
+            }
         }
     }
 
@@ -72,12 +77,6 @@ public class PlayerController : MonoBehaviour
         
     }
 
-    void ShootOnce() {
-        if (GameObject.Find("Laser(Clone)") == null) {
-            Instantiate(laserPrefab, firePoints[0].position + Vector3.up * 6f, Quaternion.identity, transform);
-        }
-    }
-
     public void LoseHealth(int amount)
     {
         currentHealth -= amount;
@@ -87,24 +86,6 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(gameObject);
             // Trigger Game Over
-        }
-    }
-
-    public void ShootMore() {
-        shootMore = true;
-    }
-
-    public void LaserController() {
-        if (shootingType == "") {
-            shootingType = "laser";
-        }
-        else {
-            GameObject laser = GameObject.FindWithTag("Bullet");
-            if (laser != null)
-            {
-                Destroy(laser);
-            }
-            shootingType = "";
         }
     }
 }

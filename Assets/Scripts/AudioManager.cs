@@ -66,7 +66,7 @@ public class AudioManager : MonoBehaviour
 
         switch (clip)
         {
-            case "pew": selectedClip = pew; volume = 0.5f; break;
+            case "pew": selectedClip = pew; volume = 0.2f; break;
             default: return;
         }
 

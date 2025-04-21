@@ -5,8 +5,8 @@ public class Enemy : MonoBehaviour
 {
     public static List<Enemy> AllEnemies = new List<Enemy>();
     public float speed = 2f;
-    public int maxHealth = 3;
-    private int currentHealth;
+    public float maxHealth = 3;
+    private float currentHealth;
     private PlayerController player;
 
     void Start()
@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
         transform.Translate(Vector3.down * speed * Time.deltaTime);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
@@ -64,7 +64,6 @@ public class Enemy : MonoBehaviour
 
     void OnDestroy()
     {
-        AudioManager.Instance.PlaySFX("pew");
         AllEnemies.Remove(this);
     }
 }

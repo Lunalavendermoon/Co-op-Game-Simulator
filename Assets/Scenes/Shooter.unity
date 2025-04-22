@@ -5180,6 +5180,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuffTesting
       objectReference: {fileID: 0}
+    - target: {fileID: 6847041934782332674, guid: f5051ab7e971c3a43a7209df5b5d6fcd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 727716201}
+    - target: {fileID: 6847041934782332674, guid: f5051ab7e971c3a43a7209df5b5d6fcd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActivateHoming
+      objectReference: {fileID: 0}
     - target: {fileID: 7072916974995781086, guid: f5051ab7e971c3a43a7209df5b5d6fcd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

@@ -56,4 +56,15 @@ public class BuffManager : MonoBehaviour
         }
         player.shootingType = "";
     }
+
+    public void ActivateHoming() {
+        StartCoroutine(EnableHomingTemporarily());
+    }
+
+    private IEnumerator EnableHomingTemporarily()
+    {
+        player.shootingType = "homing";
+        yield return new WaitForSeconds(10f);
+        player.shootingType = "";
+    }
 }

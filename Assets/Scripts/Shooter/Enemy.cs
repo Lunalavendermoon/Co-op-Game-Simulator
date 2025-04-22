@@ -4,6 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public static List<Enemy> AllEnemies = new List<Enemy>();
+    public static Dictionary<Enemy, Vector3> AllPositions = new Dictionary<Enemy, Vector3>();
     public float speed = 2f;
     public float maxHealth = 3;
     private float currentHealth;
@@ -12,6 +13,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         AllEnemies.Add(this);
+        AllPositions.Add(this, transform.position);
         currentHealth = maxHealth;
         player = GameObject.FindWithTag("Player")?.GetComponent<PlayerController>();
     }
@@ -19,6 +21,8 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.down * speed * Time.deltaTime);
+        // TODO - idk if this line is necessary? are transforms updated in-place?
+        AllPositions[this] = transform.position;
     }
 
     public void TakeDamage(float damage)
@@ -65,5 +69,6 @@ public class Enemy : MonoBehaviour
     void OnDestroy()
     {
         AllEnemies.Remove(this);
+        AllPositions.Remove(this);
     }
 }

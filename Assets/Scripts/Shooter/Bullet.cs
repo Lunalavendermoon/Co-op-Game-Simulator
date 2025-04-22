@@ -8,13 +8,35 @@ public class Bullet : MonoBehaviour
     public string type = "";
     public static List<Bullet> AllBullets = new List<Bullet>();
 
+    bool isHoming;
+
     void Start()
     {
         AllBullets.Add(this);
     }
     void Update()
     {
-        if (type == "") {transform.Translate(Vector3.up * speed * Time.deltaTime);}
+        if (type == "") {
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
+        } else if (type == "homing") {
+            Vector3 pos = transform.position;
+            float dist = float.PositiveInfinity;
+            Vector3 targ = transform.position;
+            foreach (var obj in Enemy.AllPositions)
+            {
+                var d = (pos - obj.Value).sqrMagnitude;
+                if(d < dist)
+                {
+                    targ = obj.Value;
+                    dist = d;
+                }
+            }
+            if (Enemy.AllPositions.Count != 0) {
+                transform.Translate(Vector3.Normalize(targ - pos) * speed * Time.deltaTime);
+            } else {
+                transform.Translate(Vector3.up * speed * Time.deltaTime);
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)

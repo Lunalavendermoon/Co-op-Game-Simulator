@@ -6,14 +6,9 @@ public class Bullet : MonoBehaviour
     public float speed = 10f;
     public float damage = 1f;
     public string type = "";
-    public static List<Bullet> AllBullets = new List<Bullet>();
 
     private Vector3 lastDirection = Vector3.up;
 
-    void Start()
-    {
-        AllBullets.Add(this);
-    }
     void Update()
     {
         if (type == "") {
@@ -62,19 +57,8 @@ public class Bullet : MonoBehaviour
         type = i;
     }
 
-    public static void ApplyToAllBullets(System.Action<Bullet> action)
-    {
-        foreach (var bullet in AllBullets)
-        {
-            if (bullet != null)
-            {
-                action(bullet);
-            }
-        }
-    }
     void OnDestroy()
     {
         AudioManager.Instance.PlaySFX("pew");
-        AllBullets.Remove(this);
     }
 }

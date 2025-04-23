@@ -6,6 +6,7 @@ public class BuffManager : MonoBehaviour
 {
     public static BuffManager Instance { get; private set; }
     public PlayerController player;
+    public GameObject bulletPrefab;
     private void Awake()
     {
         if (Instance == null)
@@ -24,7 +25,7 @@ public class BuffManager : MonoBehaviour
     }
 
     public void BuffShootingDmg() {
-        Bullet.ApplyToAllBullets(b => b.damage *= 2f);
+        bulletPrefab.GetComponent<Bullet>().damage += 2f;
     }
     public void ActivateLaser()
     {

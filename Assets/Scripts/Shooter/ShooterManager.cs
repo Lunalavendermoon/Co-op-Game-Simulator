@@ -6,6 +6,7 @@ public class ShooterManager : MonoBehaviour
 {
     public static ShooterManager Instance { get; private set; }
     public EnemySpawner spawner;
+    public GameObject enemyPrefab;
     private void Awake()
     {
         if (Instance == null)
@@ -32,11 +33,13 @@ public class ShooterManager : MonoBehaviour
 
     public void SetShooterState() {
         if (spawner.spawnInterval == 1f) {
-            Enemy.ApplyToAllEnemies(e => e.speed = 1.5f);
+            Enemy.ApplyToAllEnemies(e => e.speed = 0.5f);
+            enemyPrefab.GetComponent<Enemy>().speed = 0.5f;
             spawner.UpdateSpawnInterval(3f);
         }
         else {
-            Enemy.ApplyToAllEnemies(e => e.speed = 2.5f);
+            Enemy.ApplyToAllEnemies(e => e.speed = 3f);
+            enemyPrefab.GetComponent<Enemy>().speed = 3f;
             spawner.UpdateSpawnInterval(1f);
         }
     }

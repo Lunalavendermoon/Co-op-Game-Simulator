@@ -8,14 +8,17 @@ using UnityEngine.UI;
 public class SelectionScriptableObject : ScriptableObject
 {
     [SerializeField] string option1;
+    [SerializeField] string node1;
     public int numOfInput1;
     [SerializeField] List<int> input1;
     
     [SerializeField] string option2;
+    [SerializeField] string node2;
     public int numOfInput2;
     [SerializeField] List<int> input2;
     
     [SerializeField] string option3;
+    [SerializeField] string node3;
     public int numOfInput3;
     [SerializeField] List<int> input3;
     
@@ -33,6 +36,19 @@ public class SelectionScriptableObject : ScriptableObject
     public string GetOption3()
     {
         return option3;
+    }
+
+    public string GetNode1()
+    {
+        return node1;
+    }
+    public string GetNode2()
+    {
+        return node2;
+    }
+    public string GetNode3()
+    {
+        return node3;
     }
 
 

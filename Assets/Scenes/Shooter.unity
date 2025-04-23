@@ -1297,6 +1297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18fe24f9e8cfb644b2eabb0f6124274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueRunner: {fileID: 2098873145}
   inputCorrect: {fileID: 8300000, guid: e31fdf89b5f1fa74cb7c15878ad4aacf, type: 3}
   inputIncorrect: {fileID: 8300000, guid: 5fcb64ceaee827743ac4e79431afc4e3, type: 3}
   inputSuccess: {fileID: 8300000, guid: b9e3a8fafd8e95b48880ab6969a1b489, type: 3}
@@ -1830,9 +1831,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1340469633746490589, guid: dfb24d46f5126454ab9c35ccd868df78, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7378498623202538951, guid: dfb24d46f5126454ab9c35ccd868df78, type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7378498623202538951, guid: dfb24d46f5126454ab9c35ccd868df78, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8249427093106606674, guid: dfb24d46f5126454ab9c35ccd868df78, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3243,7 +3256,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1576354677}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3dd3af2d779e9ee41865dbe5b10fd21a, type: 3}
@@ -4940,6 +4953,17 @@ PrefabInstance:
       addedObject: {fileID: 1576354678}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6298819f227bd804594a430d6548cebb, type: 3}
+--- !u!114 &2098873145 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9143119130039433690, guid: 6298819f227bd804594a430d6548cebb, type: 3}
+  m_PrefabInstance: {fileID: 2098873144}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bec29c0a230741bdac901dba8da47ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &2127780288 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 67834829968825042, guid: 49109c7e4da8a8b44bab4c49502a622e, type: 3}

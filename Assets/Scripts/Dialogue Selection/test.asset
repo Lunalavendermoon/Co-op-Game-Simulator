@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: test
   m_EditorClassIdentifier: 
   option1: Opt1
+  node1: KeepPlaying
   numOfInput1: 4
   input1: 0100000002000000030000000400000000000000
   option2: Opt2
+  node2: AskHelp
   numOfInput2: 4
   input2: 0400000003000000020000000100000000000000
   option3: Opt3
+  node3: Option3
   numOfInput3: 4
   input3: 0200000003000000010000000400000000000000
   nextOptions:

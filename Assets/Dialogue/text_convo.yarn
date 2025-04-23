@@ -27,5 +27,13 @@ title: KeepPlaying
 title: AskHelp
 ---
 <<textmessage "You" "bro do u need help">>
+<<textmessage "Username" "ya">>
+
+===
+
+title: Option3
+---
+<<textmessageimage "You" "check out this cool photo" "testingimg_1">>
+<<textmessage "Username" "cool">>
 
 ===

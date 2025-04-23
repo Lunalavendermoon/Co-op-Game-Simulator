@@ -8,6 +8,8 @@ using static UnityEngine.GraphicsBuffer;
 
 public class DialogueOption : MonoBehaviour
 {
+    public DialogueRunner dialogueRunner;
+
     [SerializeField] AudioClip inputCorrect;
     [SerializeField] AudioClip inputIncorrect;
     [SerializeField] AudioClip inputSuccess;
@@ -199,6 +201,7 @@ public class DialogueOption : MonoBehaviour
             SFX.PlayOneShot(inputSuccess);
             option1.text = "<b><u>" + dialogueOption.GetOption1() + "</u></b>";
             option1.color = Color.yellow;
+            dialogueRunner.StartDialogue(dialogueOption.GetNode1());
             dialogueOption = dialogueOption.GetSelection(0);
             recieveNewOption();
             resetField();
@@ -209,6 +212,7 @@ public class DialogueOption : MonoBehaviour
             SFX.PlayOneShot(inputSuccess);
             option2.text = "<b><u>" + dialogueOption.GetOption2() + "</u></b>";
             option2.color = Color.yellow;
+            dialogueRunner.StartDialogue(dialogueOption.GetNode2());
             dialogueOption = dialogueOption.GetSelection(1);
             recieveNewOption();
             resetField();
@@ -219,6 +223,7 @@ public class DialogueOption : MonoBehaviour
             SFX.PlayOneShot(inputSuccess);
             option3.text = "<b><u>" + dialogueOption.GetOption3() + "</u></b>";
             option3.color = Color.yellow;
+            dialogueRunner.StartDialogue(dialogueOption.GetNode3());
             dialogueOption = dialogueOption.GetSelection(2);
             recieveNewOption();
             resetField();

@@ -9,6 +9,10 @@ public class Bullet : MonoBehaviour
 
     private Vector3 lastDirection = Vector3.up;
 
+    void Start()
+    {
+        damage = 1f;
+    }
     void Update()
     {
         if (type == "") {
@@ -42,12 +46,6 @@ public class Bullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Enemy"))
-        {
-            Destroy(other.gameObject);
-            if (type == ""){
-            Destroy(gameObject);}
-        }
         if (other.CompareTag("Obstacle") && type != "laser") {
             Destroy(gameObject);
         }

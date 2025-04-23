@@ -25,7 +25,7 @@ public class BuffManager : MonoBehaviour
     }
 
     public void BuffShootingDmg() {
-        bulletPrefab.GetComponent<Bullet>().damage += 2f;
+        bulletPrefab.GetComponent<Bullet>().damage += 1f;
     }
     public void ActivateLaser()
     {

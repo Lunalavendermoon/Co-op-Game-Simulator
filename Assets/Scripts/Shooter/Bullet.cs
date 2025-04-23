@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     public string type = "";
     public static List<Bullet> AllBullets = new List<Bullet>();
 
-    bool isHoming;
+    private Vector3 lastDirection = Vector3.up;
 
     void Start()
     {
@@ -31,11 +31,17 @@ public class Bullet : MonoBehaviour
                     dist = d;
                 }
             }
+
             if (Enemy.AllPositions.Count != 0) {
-                transform.Translate(Vector3.Normalize(targ - pos) * speed * Time.deltaTime);
-            } else {
-                transform.Translate(Vector3.up * speed * Time.deltaTime);
+                var lookPos = targ - transform.position;
+                lookPos.x = 0;
+                lookPos.y = 0;
+                var rotation = Quaternion.LookRotation(lookPos);
+                transform.rotation = rotation;
+
+                lastDirection = Vector3.Normalize(targ - pos);
             }
+            transform.Translate(lastDirection * speed * Time.deltaTime);
         }
     }
 
@@ -47,7 +53,7 @@ public class Bullet : MonoBehaviour
             if (type == ""){
             Destroy(gameObject);}
         }
-        if (other.CompareTag("Obstacle") && type == "") {
+        if (other.CompareTag("Obstacle") && type != "laser") {
             Destroy(gameObject);
         }
     }

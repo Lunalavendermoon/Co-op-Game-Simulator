@@ -54,6 +54,7 @@ public class Enemy : MonoBehaviour
                     KillEnemy();
                 }
                 else{
+                    isDead = true;
                     Destroy(gameObject);
                 }
             }
@@ -89,6 +90,10 @@ public class Enemy : MonoBehaviour
             AudioManager.Instance.PlaySFX("explode");
             StartCoroutine(DestroyAfterAnim());
         }
+    }
+
+    public bool IsDead() {
+        return isDead;
     }
 
     void OnDestroy()

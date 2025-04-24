@@ -20,9 +20,12 @@ public class Bullet : MonoBehaviour
         if (type == "homing") {
             Vector3 pos = transform.position;
             float dist = float.PositiveInfinity;
-            Vector3 targ = transform.position;
+            Vector3 targ = new Vector3(pos.x, pos.y - 1000, pos.z);
             foreach (var obj in Enemy.AllPositions)
             {
+                if (obj.Key.IsDead()) {
+                    continue;
+                }
                 var d = (pos - obj.Value).sqrMagnitude;
                 if(d < dist)
                 {
@@ -33,38 +36,11 @@ public class Bullet : MonoBehaviour
 
             Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
-            if (Enemy.AllPositions.Count != 0) {
-                Vector3 lastDirection = Vector3.Normalize(targ - pos);
-                // transform.Translate(lastDirection * speed * Time.deltaTime);
-                float rotateAmount = Vector3.Cross(lastDirection, transform.up).z;
+            Vector3 lastDirection = Vector3.Normalize(targ - pos);
+            float rotateAmount = Vector3.Cross(lastDirection, transform.up).z;
 
-                rb.angularVelocity = -rotateAmount * rotateSpeed;
-                rb.velocity = transform.up * speed;
-            } else {
-                rb.angularVelocity = 0;
-                transform.Translate(Vector3.up * speed * Time.deltaTime);
-            }
-
-            // Vector3 pos = transform.position;
-            // float dist = float.PositiveInfinity;
-            // Vector3 targ = new Vector3(pos.x, pos.y - 1000, pos.z);
-            // foreach (var obj in Enemy.AllPositions)
-            // {
-            //     var d = (pos - obj.Value).sqrMagnitude;
-            //     if(d < dist)
-            //     {
-            //         targ = obj.Value;
-            //         dist = d;
-            //     }
-            // }
-
-            // Rigidbody2D rb = GetComponent<Rigidbody2D>();
-
-            // Vector3 lastDirection = Vector3.Normalize(targ - pos);
-            // float rotateAmount = Vector3.Cross(lastDirection, transform.up).z;
-
-            // rb.angularVelocity = -rotateAmount * rotateSpeed;
-            // rb.velocity = transform.up * speed;
+            rb.angularVelocity = -rotateAmount * rotateSpeed;
+            rb.velocity = transform.up * speed;
         }
     }
 

@@ -9,6 +9,7 @@ public class ShooterManager : MonoBehaviour
     public GameObject enemyPrefab;
     public GameObject bulletPrefab;
     public GameObject shooter;
+    public GameObject gameover;
     private void Awake()
     {
         if (Instance == null)
@@ -49,5 +50,6 @@ public class ShooterManager : MonoBehaviour
     public void GameOver() {
         AudioManager.Instance.PlayBGM("gameover");
         shooter.SetActive(false);
+        gameover.SetActive(true);
     }
 }

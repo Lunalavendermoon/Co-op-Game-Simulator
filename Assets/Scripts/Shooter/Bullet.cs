@@ -9,10 +9,6 @@ public class Bullet : MonoBehaviour
 
     private Vector3 lastDirection = Vector3.up;
 
-    void Start()
-    {
-        damage = 1f;
-    }
     void Update()
     {
         if (type == "") {
@@ -53,10 +49,5 @@ public class Bullet : MonoBehaviour
 
     public void SetType(string i) {
         type = i;
-    }
-
-    void OnDestroy()
-    {
-        AudioManager.Instance.PlaySFX("pew");
     }
 }

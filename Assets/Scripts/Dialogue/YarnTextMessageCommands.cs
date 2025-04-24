@@ -9,7 +9,7 @@ public static class YarnTextMessageCommands
     {
         var manager = GameObject.FindObjectOfType<TextMessageCommand>();
         manager.SpawnMessage(sender, message);
-
+        AudioManager.Instance.PlaySFX("message");
         yield return new WaitForSeconds(0.5f);
     }
 }

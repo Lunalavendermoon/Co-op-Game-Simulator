@@ -7,6 +7,8 @@ public class ShooterManager : MonoBehaviour
     public static ShooterManager Instance { get; private set; }
     public EnemySpawner spawner;
     public GameObject enemyPrefab;
+    public GameObject bulletPrefab;
+    public GameObject shooter;
     private void Awake()
     {
         if (Instance == null)
@@ -22,7 +24,7 @@ public class ShooterManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        bulletPrefab.GetComponent<Bullet>().damage = 1f;
     }
 
     // Update is called once per frame
@@ -42,5 +44,10 @@ public class ShooterManager : MonoBehaviour
             enemyPrefab.GetComponent<Enemy>().speed = 3f;
             spawner.UpdateSpawnInterval(1f);
         }
+    }
+
+    public void GameOver() {
+        AudioManager.Instance.PlayBGM("gameover");
+        shooter.SetActive(false);
     }
 }

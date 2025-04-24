@@ -9,13 +9,6 @@ using static UnityEngine.GraphicsBuffer;
 public class DialogueOption : MonoBehaviour
 {
     public DialogueRunner dialogueRunner;
-
-    [SerializeField] AudioClip inputCorrect;
-    [SerializeField] AudioClip inputIncorrect;
-    [SerializeField] AudioClip inputSuccess;
-    [SerializeField] AudioSource SFX;
-
-
     [SerializeField] TextMeshProUGUI option1;
     [SerializeField] TextMeshProUGUI input1_1;
     [SerializeField] TextMeshProUGUI input1_2;
@@ -124,8 +117,6 @@ public class DialogueOption : MonoBehaviour
         option2.text = dialogueOption.GetOption2();
         option3.text = dialogueOption.GetOption3();
 
-        
-
         // put player input and convert it into arrows
         for (int i = 0; i < 5; i++)
         {
@@ -159,13 +150,12 @@ public class DialogueOption : MonoBehaviour
         }
     }
 
-
     // compare player input with arrow directions
     void compareInput(int input)
     {
         if (input == dialogueOption.GetInput1(countInput) && (isFirstInput || lineTypingOn == 1))
         {
-            SFX.PlayOneShot(inputCorrect, 0.5f);
+            AudioManager.Instance.PlaySFX("inputCorrect");
             isFirstInput = false;
             lineTypingOn = 1;
             inputs1[countInput].text = "<b><u>" + convertToText(dialogueOption.GetInput1(countInput)) + "</u></b>";
@@ -173,7 +163,7 @@ public class DialogueOption : MonoBehaviour
         }
         else if (input == dialogueOption.GetInput2(countInput) && (isFirstInput || lineTypingOn == 2))
         {
-            SFX.PlayOneShot(inputCorrect, 0.5f);
+            AudioManager.Instance.PlaySFX("inputCorrect");
             isFirstInput = false;
             lineTypingOn = 2;
             inputs2[countInput].text = "<b><u>" + convertToText(dialogueOption.GetInput2(countInput)) + "</u></b>";
@@ -181,7 +171,7 @@ public class DialogueOption : MonoBehaviour
         }
         else if (input == dialogueOption.GetInput3(countInput) && (isFirstInput || lineTypingOn == 3))
         {
-            SFX.PlayOneShot(inputCorrect, 0.5f);
+            AudioManager.Instance.PlaySFX("inputCorrect");
             isFirstInput = false;
             lineTypingOn = 3;
             inputs3[countInput].text = "<b><u>" + convertToText(dialogueOption.GetInput3(countInput)) + "</u></b>";
@@ -189,16 +179,13 @@ public class DialogueOption : MonoBehaviour
         }
         else
         {
-            SFX.PlayOneShot(inputIncorrect, 0.5f);
+            AudioManager.Instance.PlaySFX("inputIncorrect");
             resetField();
         }
 
-
-
-
         if (lineTypingOn == 1 && countInput == dialogueOption.numOfInput1 - 1)
         {
-            SFX.PlayOneShot(inputSuccess);
+            AudioManager.Instance.PlaySFX("inputSuccess");
             option1.text = "<b><u>" + dialogueOption.GetOption1() + "</u></b>";
             option1.color = Color.yellow;
             dialogueRunner.StartDialogue(dialogueOption.GetNode1());
@@ -209,7 +196,7 @@ public class DialogueOption : MonoBehaviour
         }
         else  if (lineTypingOn == 2 && countInput == dialogueOption.numOfInput2 - 1)
         {
-            SFX.PlayOneShot(inputSuccess);
+            AudioManager.Instance.PlaySFX("inputSuccess");
             option2.text = "<b><u>" + dialogueOption.GetOption2() + "</u></b>";
             option2.color = Color.yellow;
             dialogueRunner.StartDialogue(dialogueOption.GetNode2());
@@ -220,7 +207,7 @@ public class DialogueOption : MonoBehaviour
         }
         else if (lineTypingOn == 3 && countInput == dialogueOption.numOfInput3 - 1)
         {
-            SFX.PlayOneShot(inputSuccess);
+            AudioManager.Instance.PlaySFX("inputSuccess");
             option3.text = "<b><u>" + dialogueOption.GetOption3() + "</u></b>";
             option3.color = Color.yellow;
             dialogueRunner.StartDialogue(dialogueOption.GetNode3());
@@ -229,8 +216,6 @@ public class DialogueOption : MonoBehaviour
             resetField();
             optionPrefab.SetActive(false);
         }
-
-        
     }
 
     void resetField()
@@ -256,11 +241,9 @@ public class DialogueOption : MonoBehaviour
         }
     }
 
-
     [YarnCommand("setOptionActive")]
     public static void ShowSelection()
     {
-        Debug.Log("Yarn ������ debuglog �ɹ���");
         var dialogueOption = GameObject.Find("/Dialogue/Canvas/Dialogue Option");
         dialogueOption.SetActive(true);
     }

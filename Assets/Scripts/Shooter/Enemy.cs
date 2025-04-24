@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,9 @@ public class Enemy : MonoBehaviour
     public float maxHealth = 3;
     private float currentHealth;
     private PlayerController player;
+    private Animator animator;
+    private bool isDead = false;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
@@ -16,6 +20,9 @@ public class Enemy : MonoBehaviour
         AllPositions.Add(this, transform.position);
         currentHealth = maxHealth;
         player = GameObject.FindWithTag("Player")?.GetComponent<PlayerController>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.color = Color.white;
     }
 
     void Update()
@@ -28,30 +35,38 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        StartCoroutine(GotHit());
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
+            KillEnemy();
         }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("Obstacle"))
-        {
-            if (player != null)
+        if (!isDead){
+            if (other.CompareTag("Player") || other.CompareTag("Obstacle"))
             {
-                player.LoseHealth(1);
+                if (player != null)
+                {
+                    player.LoseHealth(1);
+                }
+                if (other.CompareTag("Player")){
+                    KillEnemy();
+                }
+                else{
+                    Destroy(gameObject);
+                }
             }
-            Destroy(gameObject);
-        }
 
-        if (other.CompareTag("Bullet"))
-        {
-            Bullet bullet = other.GetComponent<Bullet>();
-            if (bullet != null)
+            if (other.CompareTag("Bullet"))
             {
-                TakeDamage(bullet.damage);
-                if(bullet.type != "laser"){
-                Destroy(other.gameObject);}
+                Bullet bullet = other.GetComponent<Bullet>();
+                if (bullet != null)
+                {
+                    TakeDamage(bullet.damage);
+                    if(bullet.type != "laser"){
+                    Destroy(other.gameObject);}
+                }
             }
         }
     }
@@ -67,9 +82,30 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void KillEnemy() {
+        if (!isDead) {
+            isDead = true;
+            animator.SetTrigger("explode");
+            AudioManager.Instance.PlaySFX("explode");
+            StartCoroutine(DestroyAfterAnim());
+        }
+    }
+
     void OnDestroy()
     {
         AllEnemies.Remove(this);
         AllPositions.Remove(this);
+    }
+
+    IEnumerator DestroyAfterAnim() {
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+    }
+
+    IEnumerator GotHit() {
+        AudioManager.Instance.PlaySFX("pew");
+        spriteRenderer.color = new Color(1f, 0.6f, 0.6f, 1f);
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = Color.white;
     }
 }

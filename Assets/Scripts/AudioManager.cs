@@ -9,13 +9,24 @@ public class AudioManager : MonoBehaviour
 
     [Header("Audio Sources")]
     public AudioSource bgmSource;
-    public AudioSource sfxSource;
+    public AudioSource sfxSource1;
+    public AudioSource sfxSource2;
 
     [Header("BGM Clips")]
     public AudioClip game;
+    public AudioClip gameover;
 
-    [Header("SFX Clips")]
+    [Header("SFX Clips 1")]
     public AudioClip pew;
+    public AudioClip explode;
+    public AudioClip losehealth;
+
+    [Header("SFX Clips 2")]
+    [SerializeField] AudioClip inputCorrect;
+    [SerializeField] AudioClip inputIncorrect;
+    [SerializeField] AudioClip inputSuccess;
+    [SerializeField] AudioClip optionOn;
+    public AudioClip message;
 
     private string currentBGM = "";
     private bool canPlaySFX = true;
@@ -50,7 +61,8 @@ public class AudioManager : MonoBehaviour
     {
         switch (clip)
         {
-            case "game": bgmSource.clip = game; bgmSource.volume = 0.5f; break;
+            case "game": bgmSource.clip = game; bgmSource.volume = 0.1f; break;
+            case "gameover": bgmSource.clip = gameover; bgmSource.volume = 0.2f; bgmSource.loop = false; break;
             default: return;
         }
 
@@ -61,16 +73,33 @@ public class AudioManager : MonoBehaviour
     {
         if (!canPlaySFX) return;
 
-        AudioClip selectedClip = null;
-        float volume = 1f;
+        AudioClip selectedClip1 = null;
+        AudioClip selectedClip2 = null;
+        
+        float volume1 = 1f;
+        float volume2 = 1f;
+        float pitch1 = 1f;
+        float pitch2 = 1f;
 
         switch (clip)
         {
-            case "pew": selectedClip = pew; volume = 0.2f; break;
+            //1: for shooter minigame
+            case "pew": selectedClip1 = pew; volume1 = 0.1f; pitch1 = Random.Range(0.5f, 2f); break;
+            case "explode": selectedClip1 = explode; volume1 = 0.2f; break;
+            case "losehealth": selectedClip1 = losehealth; volume1 = 0.3f; break;
+            //2: for messaging
+            case "optionOn": selectedClip2 = optionOn; break;
+            case "inputCorrect": selectedClip2 = inputCorrect; break;
+            case "inputIncorrect": selectedClip2 = inputIncorrect; break;
+            case "inputSuccess": selectedClip2 = inputSuccess; break;
+            case "message": selectedClip2 = message; break;
             default: return;
         }
 
-        sfxSource.PlayOneShot(selectedClip, volume);
+        sfxSource1.PlayOneShot(selectedClip1, volume1);
+        sfxSource1.pitch = pitch1;
+        sfxSource2.PlayOneShot(selectedClip2, volume2);
+        sfxSource2.pitch = pitch2;
     }
 
     private IEnumerator EnableSFXAfterDelay(float delay)

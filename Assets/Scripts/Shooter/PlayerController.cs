@@ -81,11 +81,12 @@ public class PlayerController : MonoBehaviour
     {
         currentHealth -= amount;
         healthBar.SetHealth(currentHealth);
-        Debug.Log("player lost health");
+        if (amount > 0) {
+            AudioManager.Instance.PlaySFX("losehealth");
+        }
         if (currentHealth <= 0)
         {
-            Destroy(gameObject);
-            // Trigger Game Over
+            ShooterManager.Instance.GameOver();
         }
     }
 }

@@ -4,16 +4,20 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 10f;
+    public float rotateSpeed = 400f;
     public float damage = 1f;
     public string type = "";
-
-    private Vector3 lastDirection = Vector3.up;
 
     void Update()
     {
         if (type == "") {
             transform.Translate(Vector3.up * speed * Time.deltaTime);
-        } else if (type == "homing") {
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (type == "homing") {
             Vector3 pos = transform.position;
             float dist = float.PositiveInfinity;
             Vector3 targ = transform.position;
@@ -27,16 +31,19 @@ public class Bullet : MonoBehaviour
                 }
             }
 
-            if (Enemy.AllPositions.Count != 0) {
-                var lookPos = targ - transform.position;
-                lookPos.x = 0;
-                lookPos.y = 0;
-                var rotation = Quaternion.LookRotation(lookPos);
-                transform.rotation = rotation;
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
-                lastDirection = Vector3.Normalize(targ - pos);
+            if (Enemy.AllPositions.Count != 0) {
+                Vector3 lastDirection = Vector3.Normalize(targ - pos);
+                // transform.Translate(lastDirection * speed * Time.deltaTime);
+                float rotateAmount = Vector3.Cross(lastDirection, transform.up).z;
+
+                rb.angularVelocity = -rotateAmount * rotateSpeed;
+                rb.velocity = transform.up * speed;
+            } else {
+                rb.angularVelocity = 0;
+                transform.Translate(Vector3.up * speed * Time.deltaTime);
             }
-            transform.Translate(lastDirection * speed * Time.deltaTime);
         }
     }
 

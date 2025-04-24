@@ -21,7 +21,12 @@ public class SelectionScriptableObject : ScriptableObject
     [SerializeField] string node3;
     public int numOfInput3;
     [SerializeField] List<int> input3;
-    
+
+    [SerializeField] string option4;
+    [SerializeField] string node4;
+    public int numOfInput4;
+    [SerializeField] List<int> input4;
+
     [SerializeField] SelectionScriptableObject[] nextOptions;
     public int numberOfInput;
 
@@ -37,6 +42,10 @@ public class SelectionScriptableObject : ScriptableObject
     {
         return option3;
     }
+    public string GetOption4()
+    {
+        return option4;
+    }
 
     public string GetNode1()
     {
@@ -49,6 +58,10 @@ public class SelectionScriptableObject : ScriptableObject
     public string GetNode3()
     {
         return node3;
+    }
+    public string GetNode4()
+    {
+        return node4;
     }
 
 
@@ -63,6 +76,10 @@ public class SelectionScriptableObject : ScriptableObject
     public int GetInput3(int number)
     {
         return input3[number];
+    }
+    public int GetInput4(int number)
+    {
+        return input4[number];
     }
 
     public SelectionScriptableObject GetSelection(int index)

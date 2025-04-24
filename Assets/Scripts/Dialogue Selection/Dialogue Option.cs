@@ -33,6 +33,14 @@ public class DialogueOption : MonoBehaviour
     [SerializeField] TextMeshProUGUI input3_5;
     List<TextMeshProUGUI> inputs3 = new List<TextMeshProUGUI>();
 
+    [SerializeField] TextMeshProUGUI option4;
+    [SerializeField] TextMeshProUGUI input4_1;
+    [SerializeField] TextMeshProUGUI input4_2;
+    [SerializeField] TextMeshProUGUI input4_3;
+    [SerializeField] TextMeshProUGUI input4_4;
+    [SerializeField] TextMeshProUGUI input4_5;
+    List<TextMeshProUGUI> inputs4 = new List<TextMeshProUGUI>();
+
     [SerializeField] SelectionScriptableObject dialogueOption;
     [SerializeField] GameObject optionPrefab;
 
@@ -64,6 +72,12 @@ public class DialogueOption : MonoBehaviour
         inputs3.Add(input3_3);
         inputs3.Add(input3_4);
         inputs3.Add(input3_5);
+
+        inputs4.Add(input4_1);
+        inputs4.Add(input4_2);
+        inputs4.Add(input4_3);
+        inputs4.Add(input4_4);
+        inputs4.Add(input4_5);
         recieveNewOption();
     }
 
@@ -116,6 +130,7 @@ public class DialogueOption : MonoBehaviour
         option1.text = dialogueOption.GetOption1();
         option2.text = dialogueOption.GetOption2();
         option3.text = dialogueOption.GetOption3();
+        option4.text = dialogueOption.GetOption4();
 
         // put player input and convert it into arrows
         for (int i = 0; i < 5; i++)
@@ -123,6 +138,7 @@ public class DialogueOption : MonoBehaviour
             inputs1[i].text = convertToText(dialogueOption.GetInput1(i));
             inputs2[i].text = convertToText(dialogueOption.GetInput2(i));
             inputs3[i].text = convertToText(dialogueOption.GetInput3(i));
+            inputs4[i].text = convertToText(dialogueOption.GetInput4(i));
         }
     }
 
@@ -177,6 +193,14 @@ public class DialogueOption : MonoBehaviour
             inputs3[countInput].text = "<b><u>" + convertToText(dialogueOption.GetInput3(countInput)) + "</u></b>";
             inputs3[countInput].color = Color.yellow;
         }
+        else if (input == dialogueOption.GetInput4(countInput) && (isFirstInput || lineTypingOn == 4))
+        {
+            AudioManager.Instance.PlaySFX("inputCorrect");
+            isFirstInput = false;
+            lineTypingOn = 4;
+            inputs4[countInput].text = "<b><u>" + convertToText(dialogueOption.GetInput4(countInput)) + "</u></b>";
+            inputs4[countInput].color = Color.yellow;
+        }
         else
         {
             AudioManager.Instance.PlaySFX("inputIncorrect");
@@ -216,6 +240,17 @@ public class DialogueOption : MonoBehaviour
             resetField();
             optionPrefab.SetActive(false);
         }
+        else if (lineTypingOn == 4 && countInput == dialogueOption.numOfInput4 - 1)
+        {
+            AudioManager.Instance.PlaySFX("inputSuccess");
+            option4.text = "<b><u>" + dialogueOption.GetOption4() + "</u></b>";
+            option4.color = Color.yellow;
+            dialogueRunner.StartDialogue(dialogueOption.GetNode4());
+            dialogueOption = dialogueOption.GetSelection(2);
+            recieveNewOption();
+            resetField();
+            optionPrefab.SetActive(false);
+        }
     }
 
     void resetField()
@@ -231,13 +266,16 @@ public class DialogueOption : MonoBehaviour
             inputs1[i].text = convertToText(dialogueOption.GetInput1(i));
             inputs2[i].text = convertToText(dialogueOption.GetInput2(i));
             inputs3[i].text = convertToText(dialogueOption.GetInput3(i));
+            inputs4[i].text = convertToText(dialogueOption.GetInput4(i));
 
             option1.text = dialogueOption.GetOption1();
             option2.text = dialogueOption.GetOption2();
             option3.text = dialogueOption.GetOption3();
+            option4.text = dialogueOption.GetOption4();
             option1.color = Color.white;
             option2.color = Color.white;
             option3.color = Color.white;
+            option4.color = Color.white;
         }
     }
 

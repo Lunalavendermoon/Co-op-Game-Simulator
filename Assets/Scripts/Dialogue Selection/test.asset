@@ -24,7 +24,12 @@ MonoBehaviour:
   node3: Option3
   numOfInput3: 4
   input3: 0200000003000000010000000400000000000000
+  option4: Opt4
+  node4: 
+  numOfInput4: 4
+  input4: 0300000002000000030000000100000000000000
   nextOptions:
+  - {fileID: 11400000, guid: a9fe384a39335dc41a12a07645581617, type: 2}
   - {fileID: 11400000, guid: a9fe384a39335dc41a12a07645581617, type: 2}
   - {fileID: 11400000, guid: a9fe384a39335dc41a12a07645581617, type: 2}
   - {fileID: 11400000, guid: a9fe384a39335dc41a12a07645581617, type: 2}

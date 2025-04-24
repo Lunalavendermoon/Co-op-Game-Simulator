@@ -13,15 +13,23 @@ MonoBehaviour:
   m_Name: test2
   m_EditorClassIdentifier: 
   option1: this
+  node1: 
   numOfInput1: 4
   input1: 010000000200000004000000030000000000000000000000
   option2: is a
+  node2: 
   numOfInput2: 4
   input2: 040000000300000004000000040000000000000000000000
   option3: test
+  node3: 
   numOfInput3: 4
   input3: 020000000100000004000000040000000000000000000000
+  option4: '!!!'
+  node4: 
+  numOfInput4: 4
+  input4: 0300000003000000020000000100000000000000
   nextOptions:
+  - {fileID: 11400000, guid: 70aff79032825e541bc472c4dc365675, type: 2}
   - {fileID: 11400000, guid: 70aff79032825e541bc472c4dc365675, type: 2}
   - {fileID: 11400000, guid: 70aff79032825e541bc472c4dc365675, type: 2}
   - {fileID: 11400000, guid: 70aff79032825e541bc472c4dc365675, type: 2}

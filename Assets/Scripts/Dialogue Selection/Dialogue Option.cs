@@ -9,6 +9,7 @@ using static UnityEngine.GraphicsBuffer;
 public class DialogueOption : MonoBehaviour
 {
     public DialogueRunner dialogueRunner;
+    public RectTransform messageContainerRect;
     [SerializeField] TextMeshProUGUI option1;
     [SerializeField] TextMeshProUGUI input1_1;
     [SerializeField] TextMeshProUGUI input1_2;
@@ -250,7 +251,12 @@ public class DialogueOption : MonoBehaviour
             recieveNewOption();
             resetField();
             optionPrefab.SetActive(false);
+        } else {
+            return;
         }
+
+        // TODO resize message container
+        messageContainerRect.sizeDelta = new Vector2(messageContainerRect.sizeDelta.x, messageContainerRect.sizeDelta.y - 300);
     }
 
     void resetField()
@@ -282,7 +288,15 @@ public class DialogueOption : MonoBehaviour
     [YarnCommand("setOptionActive")]
     public static void ShowSelection()
     {
-        var dialogueOption = GameObject.Find("/Dialogue/Canvas/Dialogue Option");
+        var dialogueOption = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport/MessageContent/Dialogue Option");
         dialogueOption.SetActive(true);
+
+        dialogueOption.transform.SetSiblingIndex(dialogueOption.transform.parent.transform.childCount + 1);
+
+        // TODO resize messageContainer
+        var msgCont = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport/MessageContent");
+        RectTransform messageContainer = msgCont.GetComponent<RectTransform>();
+
+        messageContainer.sizeDelta = new Vector2(messageContainer.sizeDelta.x, messageContainer.sizeDelta.y + 300);
     }
 }

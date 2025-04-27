@@ -27,7 +27,7 @@ MonoBehaviour:
   option4: '!!!'
   node4: 
   numOfInput4: 4
-  input4: 0300000003000000020000000100000000000000
+  input4: 0300000002000000040000000400000000000000
   nextOptions:
   - {fileID: 11400000, guid: 70aff79032825e541bc472c4dc365675, type: 2}
   - {fileID: 11400000, guid: 70aff79032825e541bc472c4dc365675, type: 2}

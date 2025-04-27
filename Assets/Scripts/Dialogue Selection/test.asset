@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   option1: Opt1
   node1: KeepPlaying
-  numOfInput1: 4
+  numOfInput1: 5
   input1: 0100000002000000030000000400000000000000
   option2: Opt2
   node2: AskHelp
@@ -27,7 +27,7 @@ MonoBehaviour:
   option4: Opt4
   node4: 
   numOfInput4: 4
-  input4: 0300000002000000030000000100000000000000
+  input4: 0300000002000000010000000300000000000000
   nextOptions:
   - {fileID: 11400000, guid: a9fe384a39335dc41a12a07645581617, type: 2}
   - {fileID: 11400000, guid: a9fe384a39335dc41a12a07645581617, type: 2}

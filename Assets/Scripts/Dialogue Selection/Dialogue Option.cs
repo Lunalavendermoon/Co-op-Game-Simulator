@@ -298,7 +298,7 @@ public class DialogueOption : MonoBehaviour
 
         dialogueOption.transform.SetSiblingIndex(dialogueOption.transform.parent.transform.childCount + 1);
 
-        // TODO resize messageContainer
+        // TODO resize messageContainer based on number of dialogue options (how do we check amount of options?)
         var msgCont = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport/MessageContent");
         RectTransform messageContainer = msgCont.GetComponent<RectTransform>();
 

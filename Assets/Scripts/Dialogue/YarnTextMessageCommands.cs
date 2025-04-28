@@ -4,6 +4,8 @@ using System.Collections;
 
 public static class YarnTextMessageCommands
 {
+    public static int captchaValue;
+
     [YarnCommand("textmessage")]
     public static IEnumerator ShowTextMessage(string sender, string message)
     {
@@ -14,10 +16,20 @@ public static class YarnTextMessageCommands
     }
 
     [YarnCommand("textmessageimage")]
-    public static IEnumerator ShowTextMessage(string sender, string message, string filename)
+    public static IEnumerator ShowTextMessageImage(string sender, string message, string filename)
     {
         var manager = GameObject.FindObjectOfType<TextMessageCommand>();
         manager.SpawnImageMessage(sender, message, filename);
+
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    [YarnCommand("textmessagecaptcha")]
+    public static IEnumerator ShowTextMessageCaptcha(string sender, string message)
+    {
+        captchaValue = Random.Range(1,11);
+        var manager = GameObject.FindObjectOfType<TextMessageCommand>();
+        manager.SpawnImageMessage(sender, message, "Captchas/图片" + captchaValue);
 
         yield return new WaitForSeconds(0.5f);
     }

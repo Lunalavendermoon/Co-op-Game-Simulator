@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39fafc8a0e3e1df4e94f78894479f4f8, type: 3}
   m_Name: test
   m_EditorClassIdentifier: 
-  option1: Opt1
+  option1: Keep playing
   node1: KeepPlaying
   numOfInput1: 4
   input1: 0100000002000000030000000400000000000000
-  option2: Opt2
+  option2: Ask if they need help
   node2: AskHelp
   numOfInput2: 4
   input2: 0400000003000000020000000100000000000000

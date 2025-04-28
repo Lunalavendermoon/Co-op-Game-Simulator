@@ -56,13 +56,13 @@ public class TextMessageBubble : MonoBehaviour
 
         Rect spriteSize = sprite.rect;
 
-        // Resize image to keep it small
-        if (sprite.rect.height > maxImgHeight) {
-            spriteSize.width = spriteSize.width * maxImgHeight / spriteSize.height;
-            spriteSize.height = maxImgHeight;
-        } else if (sprite.rect.width > maxImgWidth) {
+        // Resize image to keep it consistent
+        if (sprite.rect.width / sprite.rect.height > 1) {
             spriteSize.height = spriteSize.height * maxImgWidth / spriteSize.width;
             spriteSize.width = maxImgWidth;
+        } else {
+            spriteSize.width = spriteSize.width * maxImgHeight / spriteSize.height;
+            spriteSize.height = maxImgHeight;
         }
 
         image.GetComponent<RectTransform>().sizeDelta = new Vector2(spriteSize.width, spriteSize.height);

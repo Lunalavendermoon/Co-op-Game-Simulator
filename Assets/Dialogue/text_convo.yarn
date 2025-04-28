@@ -29,6 +29,10 @@ title: AskHelp
 ---
 <<textmessage "You" "bro do u need help">>
 <<textmessage "Username" "ya">>
+<<textmessagecaptcha "Username" "can u solve this">>
+<<textmessagecaptcha "Username" "or this">>
+<<textmessagecaptcha "Username" "how about this">>
+<<textmessage "You" "what...">>
 
 <<setOptionActive>>
 

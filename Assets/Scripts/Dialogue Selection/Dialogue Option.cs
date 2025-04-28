@@ -52,6 +52,8 @@ public class DialogueOption : MonoBehaviour
     bool canInput = false;
     int lineTypingOn = 0;
 
+    const int dialogueOptionHeight = 100;
+
     void Start()
     {
         optionPrefab.SetActive(false);
@@ -208,6 +210,8 @@ public class DialogueOption : MonoBehaviour
             resetField();
         }
 
+        Debug.Log("### " + lineTypingOn + " " + countInput + " " + (dialogueOption.numOfInput1 - 1));
+
         if (lineTypingOn == 1 && countInput == dialogueOption.numOfInput1 - 1)
         {
             AudioManager.Instance.PlaySFX("inputSuccess");
@@ -256,7 +260,8 @@ public class DialogueOption : MonoBehaviour
         }
 
         // TODO resize message container
-        messageContainerRect.sizeDelta = new Vector2(messageContainerRect.sizeDelta.x, messageContainerRect.sizeDelta.y - 300);
+        messageContainerRect.sizeDelta = new Vector2(messageContainerRect.sizeDelta.x,
+                messageContainerRect.sizeDelta.y - 3 * dialogueOptionHeight);
     }
 
     void resetField()
@@ -297,6 +302,7 @@ public class DialogueOption : MonoBehaviour
         var msgCont = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport/MessageContent");
         RectTransform messageContainer = msgCont.GetComponent<RectTransform>();
 
-        messageContainer.sizeDelta = new Vector2(messageContainer.sizeDelta.x, messageContainer.sizeDelta.y + 300);
+        messageContainer.sizeDelta = new Vector2(messageContainer.sizeDelta.x,
+                messageContainer.sizeDelta.y + 3 * dialogueOptionHeight);
     }
 }

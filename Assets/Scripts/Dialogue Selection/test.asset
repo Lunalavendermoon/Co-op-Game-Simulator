@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   option1: Opt1
   node1: KeepPlaying
-  numOfInput1: 5
+  numOfInput1: 4
   input1: 0100000002000000030000000400000000000000
   option2: Opt2
   node2: AskHelp

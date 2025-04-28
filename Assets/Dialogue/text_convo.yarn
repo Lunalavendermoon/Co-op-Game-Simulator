@@ -15,12 +15,13 @@
 title: KeepPlaying
 ---
 <<textmessage "You" "ok ill keep playing">>
-
 <<textmessage "Username" "im just going to type a very long sentence but I will keep trying to make it very long and even longer hopefully it goes to the second line">>
 <<textmessage "Username" "here's more dialogue">>
 <<textmessage "Username" "testing some more">>
 <<textmessage "You" "here's more dialogue">>
 <<textmessage "You" "test test">>
+
+<<setOptionActive>>
 
 ===
 
@@ -29,11 +30,15 @@ title: AskHelp
 <<textmessage "You" "bro do u need help">>
 <<textmessage "Username" "ya">>
 
+<<setOptionActive>>
+
 ===
 
 title: Option3
 ---
 <<textmessageimage "You" "check out this cool photo" "testingimg_1">>
 <<textmessage "Username" "cool">>
+
+<<setOptionActive>>
 
 ===

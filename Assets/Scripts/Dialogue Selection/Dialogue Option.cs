@@ -45,13 +45,20 @@ public class DialogueOption : MonoBehaviour
     [SerializeField] SelectionScriptableObject dialogueOption;
     [SerializeField] GameObject optionPrefab;
 
+    int inputNum1;
+    int inputNum2;
+    int inputNum3;
+    int inputNum4;
+
     int countInput = -1;
     int playerInput;
 
     bool isFirstInput = true;
     bool canInput = false;
+    [SerializeField] int mode = 0; // mode0 = scritable object mode | mode1 = captcha mode | mode2 = skill/powerUps mode
     int lineTypingOn = 0;
-
+    int difficulty = 1;
+    int countWin = 0;
     const int dialogueOptionHeight = 100;
 
     void Start()
@@ -84,56 +91,104 @@ public class DialogueOption : MonoBehaviour
         recieveNewOption();
     }
 
+    void Inputs(int number)
+    {
+        playerInput = number;
+        countInput++;
+        compareInput(playerInput);
+    }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && canInput)
-        {
-            playerInput = 1;
-            countInput++;
-            compareInput(playerInput);
-        }
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && canInput)
-        {
-            playerInput = 2;
-            countInput++;
-            compareInput(playerInput);
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) && canInput)
-        {
-            playerInput = 3;
-            countInput++;
-            compareInput(playerInput);
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && canInput)
-        {
-            playerInput = 4;
-            countInput++;
-            compareInput(playerInput);
-        }
+        if (Input.GetKeyDown(KeyCode.UpArrow) && canInput)          {Inputs(1);}
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && canInput)   {Inputs(2);}
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && canInput)   {Inputs(3);}
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && canInput)  {Inputs(4);}
+        else if (Input.GetKeyDown(KeyCode.Space))                   {ShowSelection();}
 
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ShowSelection();
-        }
 
-        if (!optionPrefab.activeSelf)
+        if (!optionPrefab.activeSelf)  {canInput = false;}
+        else                           {canInput = true;}
+
+
+        if (countWin >= 2)
         {
-            canInput = false;
-        }
-        else
-        {
-            canInput = true;
+            difficulty++;
+            countWin = 0;
         }
     }
 
+
     // update new option
     public void recieveNewOption()
+    {
+        isFirstInput = true;
+        lineTypingOn = 0;
+        countInput = -1;
+
+        option1.text = "";
+        option2.text = "";
+        option3.text = "";
+        option4.text = "";
+        option1.color = Color.white;
+        option2.color = Color.white;
+        option3.color = Color.white;
+        option4.color = Color.white;
+
+        for (int i = 0; i < 5; i++)
+        {
+            inputs1[i].text = "";
+            inputs2[i].text = "";
+            inputs3[i].text = "";
+            inputs4[i].text = "";
+            inputs1[i].color = Color.white;
+            inputs2[i].color = Color.white;
+            inputs3[i].color = Color.white;
+            inputs4[i].color = Color.white;
+        }
+
+
+        if (mode == 0)
+        {
+            recieveRegularOption();
+        }
+        else if (mode == 1)
+        {
+            option1.text = "1";
+            option2.text = "2";
+            option3.text = "3";
+            option4.text = "skip";
+            inputs1[0].text = convertToText(1);
+            inputs2[0].text = convertToText(2);
+            inputs3[0].text = convertToText(3);
+            inputs4[0].text = convertToText(4);
+            createRandomInputs(difficulty);
+        }
+        else if (mode == 2)
+        {
+            option1.text = "bomb";
+            option2.text = "laser";
+            option3.text = "bomb";
+            option4.text = "laser";
+            inputs1[0].text = convertToText(1);
+            inputs2[0].text = convertToText(2);
+            inputs3[0].text = convertToText(3);
+            inputs4[0].text = convertToText(4);
+            createRandomInputs(difficulty);
+        }
+    }
+
+    void recieveRegularOption()
     {
         // put option text into the text area
         option1.text = dialogueOption.GetOption1();
         option2.text = dialogueOption.GetOption2();
         option3.text = dialogueOption.GetOption3();
         option4.text = dialogueOption.GetOption4();
+
+        inputNum1 = dialogueOption.numOfInput1;
+        inputNum2 = dialogueOption.numOfInput2;
+        inputNum3 = dialogueOption.numOfInput3;
+        inputNum4 = dialogueOption.numOfInput4;
 
         // put player input and convert it into arrows
         for (int i = 0; i < 5; i++)
@@ -145,28 +200,33 @@ public class DialogueOption : MonoBehaviour
         }
     }
 
+    void createRandomInputs(int difficulty)
+    {
+        for (int i = 1; i <= difficulty+1; i++)
+        {
+            inputs1[i].text = convertToText(UnityEngine.Random.Range(1,5));
+            inputs2[i].text = convertToText(UnityEngine.Random.Range(1,5));
+            inputs3[i].text = convertToText(UnityEngine.Random.Range(1,5));
+            inputs4[i].text = convertToText(UnityEngine.Random.Range(1,5));
+        }
+
+        inputNum1 = difficulty + 3;
+        inputNum2 = difficulty + 3;
+        inputNum3 = difficulty + 3;
+        inputNum4 = difficulty + 3;
+    }
+
+
+
+
+
     string convertToText(int input)
     {
-        if (input == 1)
-        {
-            return "u";
-        }
-        else if (input == 2)
-        {
-            return "d";
-        }
-        else if (input == 3)
-        {
-            return "l";
-        }
-        else if (input == 4)
-        {
-            return "r";
-        }
-        else
-        {
-            return "";
-        }
+        if (input == 1)        {return "u";}
+        else if (input == 2)   {return "d";}
+        else if (input == 3)   {return "l";}
+        else if (input == 4)   {return "r";}
+        else                   {return "";}
     }
 
     // compare player input with arrow directions
@@ -174,121 +234,80 @@ public class DialogueOption : MonoBehaviour
     {
         if (input == dialogueOption.GetInput1(countInput) && (isFirstInput || lineTypingOn == 1))
         {
-            AudioManager.Instance.PlaySFX("inputCorrect");
-            isFirstInput = false;
-            lineTypingOn = 1;
-            inputs1[countInput].text = "<b><u>" + convertToText(dialogueOption.GetInput1(countInput)) + "</u></b>";
-            inputs1[countInput].color = Color.yellow;
+            campare(1, inputs1[countInput]);
         }
         else if (input == dialogueOption.GetInput2(countInput) && (isFirstInput || lineTypingOn == 2))
         {
-            AudioManager.Instance.PlaySFX("inputCorrect");
-            isFirstInput = false;
-            lineTypingOn = 2;
-            inputs2[countInput].text = "<b><u>" + convertToText(dialogueOption.GetInput2(countInput)) + "</u></b>";
-            inputs2[countInput].color = Color.yellow;
+            campare(2, inputs2[countInput]);
         }
         else if (input == dialogueOption.GetInput3(countInput) && (isFirstInput || lineTypingOn == 3))
         {
-            AudioManager.Instance.PlaySFX("inputCorrect");
-            isFirstInput = false;
-            lineTypingOn = 3;
-            inputs3[countInput].text = "<b><u>" + convertToText(dialogueOption.GetInput3(countInput)) + "</u></b>";
-            inputs3[countInput].color = Color.yellow;
+            campare(3, inputs3[countInput]);
         }
         else if (input == dialogueOption.GetInput4(countInput) && (isFirstInput || lineTypingOn == 4))
         {
-            AudioManager.Instance.PlaySFX("inputCorrect");
-            isFirstInput = false;
-            lineTypingOn = 4;
-            inputs4[countInput].text = "<b><u>" + convertToText(dialogueOption.GetInput4(countInput)) + "</u></b>";
-            inputs4[countInput].color = Color.yellow;
+            campare(4, inputs4[countInput]);
         }
         else
         {
             AudioManager.Instance.PlaySFX("inputIncorrect");
-            resetField();
+            recieveNewOption();
         }
 
-        Debug.Log("### " + lineTypingOn + " " + countInput + " " + (dialogueOption.numOfInput1 - 1));
+        Debug.Log("### " + lineTypingOn + " " + countInput + " " + (inputNum1 - 1));
 
-        if (lineTypingOn == 1 && countInput == dialogueOption.numOfInput1 - 1)
+        if (lineTypingOn == 1 && countInput == inputNum1 - 1)
         {
-            AudioManager.Instance.PlaySFX("inputSuccess");
-            option1.text = "<b><u>" + dialogueOption.GetOption1() + "</u></b>";
-            option1.color = Color.yellow;
+            
             dialogueRunner.StartDialogue(dialogueOption.GetNode1());
-            dialogueOption = dialogueOption.GetSelection(0);
-            recieveNewOption();
-            resetField();
-            optionPrefab.SetActive(false);
+            inputSuccess(0);
         }
-        else  if (lineTypingOn == 2 && countInput == dialogueOption.numOfInput2 - 1)
+        else  if (lineTypingOn == 2 && countInput == inputNum2 - 1)
         {
-            AudioManager.Instance.PlaySFX("inputSuccess");
-            option2.text = "<b><u>" + dialogueOption.GetOption2() + "</u></b>";
-            option2.color = Color.yellow;
+            
             dialogueRunner.StartDialogue(dialogueOption.GetNode2());
-            dialogueOption = dialogueOption.GetSelection(1);
-            recieveNewOption();
-            resetField();
-            optionPrefab.SetActive(false);
+            inputSuccess(1);
         }
-        else if (lineTypingOn == 3 && countInput == dialogueOption.numOfInput3 - 1)
+        else if (lineTypingOn == 3 && countInput == inputNum3 - 1)
         {
-            AudioManager.Instance.PlaySFX("inputSuccess");
-            option3.text = "<b><u>" + dialogueOption.GetOption3() + "</u></b>";
-            option3.color = Color.yellow;
+            
             dialogueRunner.StartDialogue(dialogueOption.GetNode3());
-            dialogueOption = dialogueOption.GetSelection(2);
-            recieveNewOption();
-            resetField();
-            optionPrefab.SetActive(false);
+            inputSuccess(2);
         }
-        else if (lineTypingOn == 4 && countInput == dialogueOption.numOfInput4 - 1)
+        else if (lineTypingOn == 4 && countInput == inputNum4 - 1)
         {
-            AudioManager.Instance.PlaySFX("inputSuccess");
-            option4.text = "<b><u>" + dialogueOption.GetOption4() + "</u></b>";
-            option4.color = Color.yellow;
+            
             dialogueRunner.StartDialogue(dialogueOption.GetNode4());
-            dialogueOption = dialogueOption.GetSelection(2);
-            recieveNewOption();
-            resetField();
-            optionPrefab.SetActive(false);
-        } else {
-            return;
-        }
+            inputSuccess(3);
+        } 
+        else {return;}
 
         // TODO resize message container
         messageContainerRect.sizeDelta = new Vector2(messageContainerRect.sizeDelta.x,
                 messageContainerRect.sizeDelta.y - 3 * dialogueOptionHeight);
     }
 
-    void resetField()
-    {
-        isFirstInput = true;
-        lineTypingOn = 0;
-        countInput = -1;
-        for (int i = 0; i < 5; i++)
-        {
-            inputs1[i].color = Color.white;
-            inputs2[i].color = Color.white;
-            inputs3[i].color = Color.white;
-            inputs1[i].text = convertToText(dialogueOption.GetInput1(i));
-            inputs2[i].text = convertToText(dialogueOption.GetInput2(i));
-            inputs3[i].text = convertToText(dialogueOption.GetInput3(i));
-            inputs4[i].text = convertToText(dialogueOption.GetInput4(i));
 
-            option1.text = dialogueOption.GetOption1();
-            option2.text = dialogueOption.GetOption2();
-            option3.text = dialogueOption.GetOption3();
-            option4.text = dialogueOption.GetOption4();
-            option1.color = Color.white;
-            option2.color = Color.white;
-            option3.color = Color.white;
-            option4.color = Color.white;
-        }
+    void campare(int line, TextMeshProUGUI arrowText)
+    {
+        AudioManager.Instance.PlaySFX("inputCorrect");
+        isFirstInput = false;
+        lineTypingOn = line;
+        arrowText.text = "<b><u>" + arrowText.text + "</u></b>";
+        arrowText.color = Color.yellow;
     }
+
+    void inputSuccess(int next)
+    {
+        AudioManager.Instance.PlaySFX("inputSuccess");
+        countWin++;
+        dialogueOption = dialogueOption.GetSelection(next);
+        recieveNewOption();
+        optionPrefab.SetActive(false);
+    }
+
+
+
 
     [YarnCommand("setOptionActive")]
     public static void ShowSelection()
@@ -306,3 +325,50 @@ public class DialogueOption : MonoBehaviour
                 messageContainer.sizeDelta.y + 3 * dialogueOptionHeight);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//void resetField()
+//{
+//    isFirstInput = true;
+//    lineTypingOn = 0;
+//    countInput = -1;
+//    for (int i = 0; i < 5; i++)
+//    {
+//        inputs1[i].color = Color.white;
+//        inputs2[i].color = Color.white;
+//        inputs3[i].color = Color.white;
+//        inputs4[i].color = Color.white;
+//        inputs1[i].text = convertToText(dialogueOption.GetInput1(i));
+//        inputs2[i].text = convertToText(dialogueOption.GetInput2(i));
+//        inputs3[i].text = convertToText(dialogueOption.GetInput3(i));
+//        inputs4[i].text = convertToText(dialogueOption.GetInput4(i));
+
+//        option1.text = dialogueOption.GetOption1();
+//        option2.text = dialogueOption.GetOption2();
+//        option3.text = dialogueOption.GetOption3();
+//        option4.text = dialogueOption.GetOption4();
+//        option1.color = Color.white;
+//        option2.color = Color.white;
+//        option3.color = Color.white;
+//        option4.color = Color.white;
+//    }
+//}

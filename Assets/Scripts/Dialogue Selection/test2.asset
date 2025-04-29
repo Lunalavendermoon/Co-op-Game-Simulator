@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: test2
   m_EditorClassIdentifier: 
   option1: this
-  node1: 
+  node1: KeepPlaying
   numOfInput1: 4
   input1: 010000000200000004000000030000000000000000000000
   option2: is a
-  node2: 
+  node2: AskHelp
   numOfInput2: 4
   input2: 040000000300000004000000040000000000000000000000
   option3: test
-  node3: 
+  node3: Option3
   numOfInput3: 4
   input3: 020000000100000004000000040000000000000000000000
   option4: '!!!'

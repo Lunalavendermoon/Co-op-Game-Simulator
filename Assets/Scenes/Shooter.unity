@@ -709,6 +709,7 @@ MonoBehaviour:
   input4_5: {fileID: 240037325}
   dialogueOption: {fileID: 11400000, guid: 70aff79032825e541bc472c4dc365675, type: 2}
   optionPrefab: {fileID: 1279608848}
+  mode: 0
 --- !u!4 &774294115
 Transform:
   m_ObjectHideFlags: 0

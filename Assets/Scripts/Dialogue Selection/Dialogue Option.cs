@@ -110,7 +110,7 @@ public class DialogueOption : MonoBehaviour
         else                           {canInput = true;}
 
 
-        if (countWin >= 2)
+        if (countWin >= 2 && difficulty <= 2)
         {
             difficulty++;
             countWin = 0;
@@ -210,10 +210,10 @@ public class DialogueOption : MonoBehaviour
             inputs4[i].text = convertToText(UnityEngine.Random.Range(1,5));
         }
 
-        inputNum1 = difficulty + 3;
-        inputNum2 = difficulty + 3;
-        inputNum3 = difficulty + 3;
-        inputNum4 = difficulty + 3;
+        inputNum1 = difficulty + 2;
+        inputNum2 = difficulty + 2;
+        inputNum3 = difficulty + 2;
+        inputNum4 = difficulty + 2;
     }
 
 
@@ -228,23 +228,31 @@ public class DialogueOption : MonoBehaviour
         else if (input == 4)   {return "r";}
         else                   {return "";}
     }
+    int convertToInt(string input)
+    {
+        if (input == "u")      { return 1; }
+        else if (input == "d") { return 2; }
+        else if (input == "l") { return 3; }
+        else if (input == "r") { return 4; }
+        else                   { return 0; }
+    }
 
     // compare player input with arrow directions
     void compareInput(int input)
     {
-        if (input == dialogueOption.GetInput1(countInput) && (isFirstInput || lineTypingOn == 1))
+        if (input == convertToInt(inputs1[countInput].text) && (isFirstInput || lineTypingOn == 1))
         {
             campare(1, inputs1[countInput]);
         }
-        else if (input == dialogueOption.GetInput2(countInput) && (isFirstInput || lineTypingOn == 2))
+        else if (input == convertToInt(inputs2[countInput].text) && (isFirstInput || lineTypingOn == 2))
         {
             campare(2, inputs2[countInput]);
         }
-        else if (input == dialogueOption.GetInput3(countInput) && (isFirstInput || lineTypingOn == 3))
+        else if (input == convertToInt(inputs3[countInput].text) && (isFirstInput || lineTypingOn == 3))
         {
             campare(3, inputs3[countInput]);
         }
-        else if (input == dialogueOption.GetInput4(countInput) && (isFirstInput || lineTypingOn == 4))
+        else if (input == convertToInt(inputs4[countInput].text) && (isFirstInput || lineTypingOn == 4))
         {
             campare(4, inputs4[countInput]);
         }
@@ -258,25 +266,21 @@ public class DialogueOption : MonoBehaviour
 
         if (lineTypingOn == 1 && countInput == inputNum1 - 1)
         {
-            
             dialogueRunner.StartDialogue(dialogueOption.GetNode1());
             inputSuccess(0);
         }
         else  if (lineTypingOn == 2 && countInput == inputNum2 - 1)
         {
-            
             dialogueRunner.StartDialogue(dialogueOption.GetNode2());
             inputSuccess(1);
         }
         else if (lineTypingOn == 3 && countInput == inputNum3 - 1)
         {
-            
             dialogueRunner.StartDialogue(dialogueOption.GetNode3());
             inputSuccess(2);
         }
         else if (lineTypingOn == 4 && countInput == inputNum4 - 1)
         {
-            
             dialogueRunner.StartDialogue(dialogueOption.GetNode4());
             inputSuccess(3);
         } 
@@ -300,7 +304,11 @@ public class DialogueOption : MonoBehaviour
     void inputSuccess(int next)
     {
         AudioManager.Instance.PlaySFX("inputSuccess");
-        countWin++;
+        if (mode == 1 || mode == 2)
+        {
+            countWin++;
+
+        }
         dialogueOption = dialogueOption.GetSelection(next);
         recieveNewOption();
         optionPrefab.SetActive(false);

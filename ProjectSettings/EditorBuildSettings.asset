@@ -5,10 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Endless Runner.unity
     guid: 2574bc9375ac5fc4abc62ae7d418b157
+  - enabled: 1
+    path: Assets/Scenes/testInputName.unity
+    guid: 4e380edb53d8d4403a72b6908872a454
+  - enabled: 1
+    path: Assets/Scenes/Shooter.unity
+    guid: fb9e6f470eda69d46a7ee4dac5a682c8
   m_configObjects: {}

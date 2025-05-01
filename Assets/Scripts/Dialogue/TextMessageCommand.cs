@@ -80,7 +80,7 @@ public class TextMessageCommand : MonoBehaviour
             SetUsernameInvalidText("No bad words allowed >:(");
         } else {
             playerName = userInput;
-            dialogueRunner.StartDialogue("Start");
+            //SceneChanger.ChangeSceneByIndex(1);
         }
     }
 

@@ -2200,6 +2200,10 @@ PrefabInstance:
       propertyPath: m_ReferenceResolution.y
       value: 1080
       objectReference: {fileID: 0}
+    - target: {fileID: 9143119130039433690, guid: 6298819f227bd804594a430d6548cebb, type: 3}
+      propertyPath: startNode
+      value: Start
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1533653991722127456, guid: 6298819f227bd804594a430d6548cebb, type: 3}
     m_RemovedGameObjects:

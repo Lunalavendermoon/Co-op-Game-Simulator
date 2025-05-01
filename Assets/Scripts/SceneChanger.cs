@@ -1,16 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneChanger : MonoBehaviour
+public static class SceneChanger
 {
     // Change to a scene by name
-    public void ChangeSceneByName(string sceneName)
+    public static void ChangeSceneByName(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
 
     // Change to a scene by build index
-    public void ChangeSceneByIndex(int sceneIndex)
+    public static void ChangeSceneByIndex(int sceneIndex)
     {
         SceneManager.LoadScene(sceneIndex);
     }

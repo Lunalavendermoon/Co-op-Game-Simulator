@@ -46,3 +46,14 @@ title: Option3
 <<setOptionActive>>
 
 ===
+
+title: Wait2Secs
+---
+<<textmessage "You" "Wait for two seconds">>
+<<textmessage "Username" "ok">>
+<<wait 2>>
+<<textmessage "Username" "now what">>
+
+<<setOptionActive>>
+
+===

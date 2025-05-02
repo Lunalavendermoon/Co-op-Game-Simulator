@@ -24,8 +24,8 @@ MonoBehaviour:
   node3: Option3
   numOfInput3: 4
   input3: 0200000003000000010000000400000000000000
-  option4: Opt4
-  node4: 
+  option4: Wait 2 seconds
+  node4: Wait2Secs
   numOfInput4: 4
   input4: 0300000002000000010000000300000000000000
   nextOptions:

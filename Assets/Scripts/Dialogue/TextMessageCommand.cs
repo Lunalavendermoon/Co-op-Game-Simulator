@@ -80,14 +80,13 @@ public class TextMessageCommand : MonoBehaviour
             SetUsernameInvalidText("No bad words allowed >:(");
         } else {
             playerName = userInput;
-            //SceneChanger.ChangeSceneByIndex(1);
+            SceneChanger.ChangeSceneByIndex(1);
         }
     }
 
     bool HasBadWord(string s) {
         foreach (string badWord in badWords) {
             if (s.Contains(badWord.ToLower())) {
-                Debug.Log(s + " " + badWord.ToLower());
                 return true;
             }
         }

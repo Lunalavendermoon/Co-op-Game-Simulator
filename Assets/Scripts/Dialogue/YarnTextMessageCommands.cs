@@ -33,4 +33,10 @@ public static class YarnTextMessageCommands
 
         yield return new WaitForSeconds(0.5f);
     }
+
+    [YarnCommand("setdifficulty")]
+    public static void SetShooterDifficulty(string diff) {
+        var manager = GameObject.FindObjectOfType<ShooterManager>();
+        manager.SetShooterState(diff);
+    }
 }

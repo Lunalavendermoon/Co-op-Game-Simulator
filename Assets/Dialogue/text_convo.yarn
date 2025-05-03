@@ -40,8 +40,14 @@ title: AskHelp
 
 title: Option3
 ---
-<<textmessageimage "You" "check out this cool photo" "testingimg_1">>
-<<textmessage "Username" "cool">>
+<<textmessage "You" "ok time to play hard mode for a few seconds" >>
+<<textmessage "Username" "GL">>
+
+<<setdifficulty "hard">>
+<<wait 5>>
+<<setdifficulty "easy">>
+
+<<textmessage "You" "ok back to easy mode">>
 
 <<setOptionActive>>
 

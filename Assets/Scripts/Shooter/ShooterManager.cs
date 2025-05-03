@@ -34,8 +34,8 @@ public class ShooterManager : MonoBehaviour
         
     }
 
-    public void SetShooterState() {
-        if (spawner.spawnInterval == 1f) {
+    public void SetShooterState(string difficulty) {
+        if (difficulty == "easy") {
             Enemy.ApplyToAllEnemies(e => e.speed = 0.5f);
             enemyPrefab.GetComponent<Enemy>().speed = 0.5f;
             spawner.UpdateSpawnInterval(3f);

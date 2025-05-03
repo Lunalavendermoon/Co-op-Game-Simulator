@@ -20,7 +20,7 @@ MonoBehaviour:
   node2: AskHelp
   numOfInput2: 4
   input2: 0400000003000000020000000100000000000000
-  option3: Opt3
+  option3: HARD MODE!!!
   node3: Option3
   numOfInput3: 4
   input3: 0200000003000000010000000400000000000000

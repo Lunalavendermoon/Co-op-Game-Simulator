@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Yarn.Unity;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
 public class DialogueOption : MonoBehaviour
@@ -103,6 +104,9 @@ public class DialogueOption : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.DownArrow) && canInput)   {Inputs(2);}
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && canInput)   {Inputs(3);}
         else if (Input.GetKeyDown(KeyCode.RightArrow) && canInput)  {Inputs(4);}
+        else if (Input.GetKeyDown(KeyCode.Alpha1)) { mode = 0; }
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) { mode = 1; }
+        else if (Input.GetKeyDown(KeyCode.R)) { SceneManager.LoadScene(0); }
         else if (Input.GetKeyDown(KeyCode.Space))                   {ShowSelection();}
 
 

@@ -33,4 +33,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: e4f2d43596825684092aead25e87ccd7, type: 2}
-  numberOfInput: 0
+  numberOfInput: 1

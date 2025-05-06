@@ -22,9 +22,6 @@ title: 2
 ---
 <<textmessage "You" "ctrl + shift + esc">>
 <<textmessage "Snow_12" "omg tysm tech wizard">>
-<<setdifficulty "hard">>
-<<wait 20>>
-<<setdifficulty "easy">>
 <<textmessage "Snow_12" "ok wait i fixed it">>
 <<textmessage "Snow_12" "but">>
 <<textmessage "Snow_12" "now it says 'lost connection to server'???">>

@@ -24,9 +24,13 @@ MonoBehaviour:
   node3: 
   numOfInput3: 0
   input3: 
-  option4: 
-  node4: 
-  numOfInput4: 0
-  input4: 
-  nextOptions: []
+  option4: are you ok
+  node4: 7
+  numOfInput4: 2
+  input4: 040000000200000000000000
+  nextOptions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 13782f9b87ea53b49b39f3ac0bc30d93, type: 2}
   numberOfInput: 0

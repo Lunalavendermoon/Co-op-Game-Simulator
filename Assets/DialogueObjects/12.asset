@@ -24,9 +24,13 @@ MonoBehaviour:
   node3: 
   numOfInput3: 0
   input3: 
-  option4: 
-  node4: 
-  numOfInput4: 0
+  option4: did u use microwave
+  node4: 13
+  numOfInput4: 2
   input4: 
-  nextOptions: []
+  nextOptions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   numberOfInput: 0

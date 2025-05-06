@@ -24,9 +24,13 @@ MonoBehaviour:
   node3: 
   numOfInput3: 0
   input3: 
-  option4: 
-  node4: 
-  numOfInput4: 0
-  input4: 
-  nextOptions: []
+  option4: unplug and replug
+  node4: 8
+  numOfInput4: 2
+  input4: 010000000100000000000000
+  nextOptions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: 91ca63282c108ec458169698c760b42b, type: 2}
   numberOfInput: 0

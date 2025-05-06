@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39fafc8a0e3e1df4e94f78894479f4f8, type: 3}
   m_Name: Start
   m_EditorClassIdentifier: 
-  option1: yeah
-  node1: 1
+  option1: 
+  node1: 
   numOfInput1: 0
   input1: 
   option2: 
@@ -24,9 +24,13 @@ MonoBehaviour:
   node3: 
   numOfInput3: 0
   input3: 
-  option4: 
-  node4: 
-  numOfInput4: 0
-  input4: 
-  nextOptions: []
+  option4: yeah
+  node4: 1
+  numOfInput4: 2
+  input4: 020000000100000000000000
+  nextOptions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: ae505bdd92989c4418c0302aff61ae9a, type: 2}
   numberOfInput: 0

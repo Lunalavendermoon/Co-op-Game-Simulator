@@ -8,7 +8,7 @@
 <<textmessage "Username" "here's more dialogue">>
 <<textmessage "Username" "testing some more">>
 
-<<setOptionActive>>
+<<setOptionActive "0">>
 
 ===
 

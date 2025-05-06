@@ -104,10 +104,10 @@ public class DialogueOption : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.DownArrow) && canInput)   {Inputs(2);}
         else if (Input.GetKeyDown(KeyCode.LeftArrow) && canInput)   {Inputs(3);}
         else if (Input.GetKeyDown(KeyCode.RightArrow) && canInput)  {Inputs(4);}
-        else if (Input.GetKeyDown(KeyCode.Alpha1)) { mode = 0; }
-        else if (Input.GetKeyDown(KeyCode.Alpha2)) { mode = 1; }
-        else if (Input.GetKeyDown(KeyCode.R)) { SceneManager.LoadScene(0); }
-        else if (Input.GetKeyDown(KeyCode.Space))                   {ShowSelection();}
+        else if (Input.GetKeyDown(KeyCode.Alpha1))                  { mode = 0; }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))                  { mode = 1; }
+        else if (Input.GetKeyDown(KeyCode.R))                       {SceneManager.LoadScene(0);}
+        else if (Input.GetKeyDown(KeyCode.Space))                   {ShowSelection(0);}
 
 
         if (!optionPrefab.activeSelf)  {canInput = false;}
@@ -167,7 +167,7 @@ public class DialogueOption : MonoBehaviour
             inputs4[0].text = convertToText(4);
             createRandomInputs(difficulty);
         }
-        else if (mode == 2)
+        else if (mode == 3)
         {
             option1.text = "bomb";
             option2.text = "laser";
@@ -301,10 +301,10 @@ public class DialogueOption : MonoBehaviour
         AudioManager.Instance.PlaySFX("inputCorrect");
         isFirstInput = false;
         lineTypingOn = line;
-        arrowText.text = "<b><u>" + arrowText.text + "</u></b>";
-        arrowText.color = Color.yellow;
+        arrowText.text = "<b>" + arrowText.text + "</b>";
+        arrowText.color = new Color(1f, 0.502f, 0.976f, 1f);
     }
-
+    
     void inputSuccess(int next)
     {
         AudioManager.Instance.PlaySFX("inputSuccess");
@@ -322,7 +322,7 @@ public class DialogueOption : MonoBehaviour
 
 
     [YarnCommand("setOptionActive")]
-    public static void ShowSelection()
+    public static void ShowSelection(int mode)
     {
         var dialogueOption = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport/MessageContent/Dialogue Option");
         dialogueOption.SetActive(true);

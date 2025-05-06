@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine;
 using Yarn.Unity;
 using UnityEngine.SceneManagement;
-using static UnityEngine.GraphicsBuffer;
 using UnityEngine.UI;
 
 public class DialogueOption : MonoBehaviour
@@ -46,11 +45,12 @@ public class DialogueOption : MonoBehaviour
 
     [SerializeField] SelectionScriptableObject dialogueOption;
     [SerializeField] GameObject optionPrefab;
+    [SerializeField] BuffManager player;
 
-    [SerializeField] Image optionBox1;
-    [SerializeField] Image optionBox2;
-    [SerializeField] Image optionBox3;
-    [SerializeField] Image optionBox4;
+    [SerializeField] GameObject optionBox1;
+    [SerializeField] GameObject optionBox2;
+    [SerializeField] GameObject optionBox3;
+    [SerializeField] GameObject optionBox4;
 
     int inputNum1;
     int inputNum2;
@@ -62,7 +62,8 @@ public class DialogueOption : MonoBehaviour
 
     bool isFirstInput = true;
     bool canInput = false;
-    [SerializeField] int mode = 0; // mode0 = scritable object mode | mode1 = captcha mode | mode2 = upgrade | mode3 = oneTimeSkill
+    static bool haveClear = true;
+    [SerializeField] static int mode = 0; // mode0 = scritable object mode | mode1 = captcha mode | mode2 = upgrade | mode3 = oneTimeSkill
     int lineTypingOn = 0;
     int difficulty = 1;
     int countWin = 0;
@@ -98,6 +99,7 @@ public class DialogueOption : MonoBehaviour
         recieveNewOption();
     }
 
+
     void Inputs(int number)
     {
         playerInput = number;
@@ -113,7 +115,7 @@ public class DialogueOption : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Alpha1))                  { mode = 0; }
         else if (Input.GetKeyDown(KeyCode.Alpha2))                  { mode = 1; }
         else if (Input.GetKeyDown(KeyCode.R))                       {SceneManager.LoadScene(0);}
-        else if (Input.GetKeyDown(KeyCode.Space))                   {ShowSelection(0);}
+        else if (Input.GetKeyDown(KeyCode.Space))                   { recieveNewOption(); }
 
 
         if (!optionPrefab.activeSelf)  {canInput = false;}
@@ -124,6 +126,18 @@ public class DialogueOption : MonoBehaviour
         {
             difficulty++;
             countWin = 0;
+        }
+
+
+        if (dialogueOption.numberOfInput >= 1) { optionBox4.SetActive(true); };
+        if (dialogueOption.numberOfInput >= 2) { optionBox3.SetActive(true); };
+        if (dialogueOption.numberOfInput >= 3) { optionBox2.SetActive(true); };
+        if (dialogueOption.numberOfInput >= 4) { optionBox1.SetActive(true); };
+
+        if (optionPrefab.activeSelf && !haveClear)
+        {
+            recieveNewOption();
+            haveClear = true;
         }
     }
 
@@ -163,37 +177,35 @@ public class DialogueOption : MonoBehaviour
         }
         else if (mode == 2)
         {
-            option2.text = "skill-1";
-            option3.text = "skill-2";
-            option4.text = "skill-3";
+            option2.text = "Enhance shooting!!!";
+            option3.text = "Enhance damage!!!";
+            option4.text = "Shoot more colum!!!";
             inputs2[0].text = convertToText(2);
             inputs3[0].text = convertToText(1);
             inputs4[0].text = convertToText(4);
-            createRandomInputs(difficulty);
+            createRandomInputs(difficulty, 3);
         }
-        else if (mode == 1)
+        else
         {
-            option1.text = "1";
-            option2.text = "2";
-            option3.text = "3";
-            option4.text = "skip";
+            if (mode == 1)
+            {
+                option1.text = "1";
+                option2.text = "2";
+                option3.text = "3";
+                option4.text = "skip";
+            }
+            if (mode == 3)
+            {
+                option1.text = "Activate bomb!!!";
+                option2.text = "Recover health!!!";
+                option3.text = "Activate laser!!!";
+                option4.text = "Activate homing!!!";
+            }
             inputs1[0].text = convertToText(1);
             inputs2[0].text = convertToText(2);
             inputs3[0].text = convertToText(3);
             inputs4[0].text = convertToText(4);
-            createRandomInputs(difficulty);
-        }
-        else if (mode == 3)
-        {
-            option1.text = "bomb";
-            option2.text = "laser";
-            option3.text = "bomb";
-            option4.text = "laser";
-            inputs1[0].text = convertToText(1);
-            inputs2[0].text = convertToText(2);
-            inputs3[0].text = convertToText(3);
-            inputs4[0].text = convertToText(4);
-            createRandomInputs(difficulty);
+            createRandomInputs(difficulty, 4);
         }
     }
 
@@ -220,20 +232,36 @@ public class DialogueOption : MonoBehaviour
         }
     }
 
-    void createRandomInputs(int difficulty)
+    void createRandomInputs(int difficulty, int optionNumber)
     {
-        for (int i = 1; i <= difficulty+1; i++)
+        if (optionNumber == 4)
         {
-            inputs1[i].text = convertToText(UnityEngine.Random.Range(1,5));
-            inputs2[i].text = convertToText(UnityEngine.Random.Range(1,5));
-            inputs3[i].text = convertToText(UnityEngine.Random.Range(1,5));
-            inputs4[i].text = convertToText(UnityEngine.Random.Range(1,5));
-        }
+            for (int i = 1; i <= difficulty + 1; i++)
+            {
+                inputs1[i].text = convertToText(UnityEngine.Random.Range(1, 5));
+                inputs2[i].text = convertToText(UnityEngine.Random.Range(1, 5));
+                inputs3[i].text = convertToText(UnityEngine.Random.Range(1, 5));
+                inputs4[i].text = convertToText(UnityEngine.Random.Range(1, 5));
+            }
 
-        inputNum1 = difficulty + 2;
-        inputNum2 = difficulty + 2;
-        inputNum3 = difficulty + 2;
-        inputNum4 = difficulty + 2;
+            inputNum1 = difficulty + 2;
+            inputNum2 = difficulty + 2;
+            inputNum3 = difficulty + 2;
+            inputNum4 = difficulty + 2;
+        }
+        if (optionNumber == 3)
+        {
+            for (int i = 1; i <= difficulty + 1; i++)
+            {
+                inputs2[i].text = convertToText(UnityEngine.Random.Range(1, 5));
+                inputs3[i].text = convertToText(UnityEngine.Random.Range(1, 5));
+                inputs4[i].text = convertToText(UnityEngine.Random.Range(1, 5));
+            }
+
+            inputNum2 = difficulty + 2;
+            inputNum3 = difficulty + 2;
+            inputNum4 = difficulty + 2;
+        }
     }
 
 
@@ -282,7 +310,7 @@ public class DialogueOption : MonoBehaviour
             recieveNewOption();
         }
 
-        Debug.Log("### " + lineTypingOn + " " + countInput + " " + (inputNum1 - 1));
+        //Debug.Log("### " + lineTypingOn + " " + countInput + " " + (inputNum1 - 1));
 
         if (lineTypingOn == 1 && countInput == inputNum1 - 1)
         {
@@ -324,13 +352,35 @@ public class DialogueOption : MonoBehaviour
     void inputSuccess(int next)
     {
         AudioManager.Instance.PlaySFX("inputSuccess");
-        if (mode == 1 || mode == 2)
+        if (mode == 0)
         {
-            countWin++;
-
+            dialogueOption = dialogueOption.GetSelection(next);
         }
-        dialogueOption = dialogueOption.GetSelection(next);
-        recieveNewOption();
+        if (mode == 1)
+        {
+            if (lineTypingOn == 1)
+            {
+                countWin++;
+                dialogueRunner.StartDialogue("captchaCorrect");
+            }
+            else
+            {
+                dialogueRunner.StartDialogue("captchaIncorrect");
+            }
+        }
+        if (mode == 2)
+        {
+            if (lineTypingOn == 2) { player.BuffShootingSpd(); }
+            if (lineTypingOn == 3) { player.BuffShootingDmg(); }
+            if (lineTypingOn == 4) { player.BuffShootingColumn(); }
+        }
+        if (mode == 3)
+        {
+            if (lineTypingOn == 1) { player.ActivateBomb(); }
+            if (lineTypingOn == 2) { player.RecoverHealth(); }
+            if (lineTypingOn == 3) { player.ActivateLaser(); }
+            if (lineTypingOn == 4) { player.ActivateHoming(); }
+        }
         optionPrefab.SetActive(false);
     }
 
@@ -338,10 +388,13 @@ public class DialogueOption : MonoBehaviour
 
 
     [YarnCommand("setOptionActive")]
-    public static void ShowSelection(int mode)
+    public static void ShowSelection(int newMode)
     {
         var dialogueOption = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport/MessageContent/Dialogue Option");
         dialogueOption.SetActive(true);
+
+        mode = newMode;
+        haveClear = false; 
 
         dialogueOption.transform.SetSiblingIndex(dialogueOption.transform.parent.transform.childCount + 1);
 

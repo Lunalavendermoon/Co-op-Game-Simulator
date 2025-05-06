@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 85534445}
   - component: {fileID: 85534444}
   m_Layer: 0
-  m_Name: "\u56FE\u72475 (1)"
+  m_Name: optionBox2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -962,11 +962,11 @@ MonoBehaviour:
   input4_5: {fileID: 240037325}
   dialogueOption: {fileID: 11400000, guid: aebf7534109b2b443ae652d3ec7fc5c5, type: 2}
   optionPrefab: {fileID: 1279608848}
-  optionBox1: {fileID: 0}
-  optionBox2: {fileID: 0}
-  optionBox3: {fileID: 0}
-  optionBox4: {fileID: 0}
-  mode: 0
+  player: {fileID: 0}
+  optionBox1: {fileID: 826276783}
+  optionBox2: {fileID: 85534443}
+  optionBox3: {fileID: 1947016203}
+  optionBox4: {fileID: 925504717}
 --- !u!4 &774294115
 Transform:
   m_ObjectHideFlags: 0
@@ -1019,7 +1019,7 @@ GameObject:
   - component: {fileID: 826276785}
   - component: {fileID: 826276784}
   m_Layer: 0
-  m_Name: "\u56FE\u72475"
+  m_Name: optionBox1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1287,7 +1287,7 @@ GameObject:
   - component: {fileID: 925504719}
   - component: {fileID: 925504718}
   m_Layer: 0
-  m_Name: "\u56FE\u72475 (3)"
+  m_Name: optionBox4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2525,7 +2525,7 @@ GameObject:
   - component: {fileID: 1947016205}
   - component: {fileID: 1947016204}
   m_Layer: 0
-  m_Name: "\u56FE\u72475 (2)"
+  m_Name: optionBox3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

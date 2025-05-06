@@ -1,40 +1,264 @@
 ﻿title: Start
 ---
-<<textmessageimage "You" "bro are you in the game yet" "testingimg_1">>
-<<textmessageimage "Username" "wait im trying to get in but theres tech issues" "testingimg_2">>
-<<textmessageimage "You" "well im alr in just waiting for u" "testingimg_3">>
-<<textmessage "You" "lemme know if you need any help">>
-<<textmessage "Username" "ok">>
-<<textmessage "Username" "here's more dialogue">>
-<<textmessage "Username" "testing some more">>
+<<setdifficulty "easy">>
+<<textmessage "Snow_12" "yo are you in the game yet">>
 
 <<setOptionActive "0">>
 
 ===
 
-title: KeepPlaying
+title: 1
 ---
-<<textmessage "You" "ok ill keep playing">>
-<<textmessage "Username" "im just going to type a very long sentence but I will keep trying to make it very long and even longer hopefully it goes to the second line">>
-<<textmessage "Username" "here's more dialogue">>
-<<textmessage "Username" "testing some more">>
-<<textmessage "You" "here's more dialogue">>
-<<textmessage "You" "test test">>
+<<textmessage "You" "yeah just loaded in O.O">>
+<<textmessage "Snow_12" "k cool cool gimme a sec">>
+<<textmessage "Snow_12" "wtf">>
+<<textmessage "Snow_12" "bro my screen is just black bruh T^T">>
 
-<<setOptionActive>>
+<<setOptionActive "0">>
 
 ===
 
-title: AskHelp
+title: 2
 ---
-<<textmessage "You" "bro do u need help">>
-<<textmessage "Username" "ya">>
-<<textmessagecaptcha "Username" "can u solve this">>
-<<textmessagecaptcha "Username" "or this">>
-<<textmessagecaptcha "Username" "how about this">>
-<<textmessage "You" "what...">>
+<<textmessage "You" "ctrl + shift + esc">>
+<<textmessage "Snow_12" "omg tysm tech wizard">>
+<<textmessage "Snow_12" "ok wait i fixed it">>
+<<textmessage "Snow_12" "but">>
+<<textmessage "Snow_12" "now it says 'lost connection to server'???">>
 
-<<setOptionActive>>
+<<setOptionActive "0">>
+
+===
+
+title: 3
+---
+<<textmessage "You" "ain’t no way ToT">>
+<<textmessage "Snow_12" "sorry sorry lemme try rejoining">>
+<<textmessage "Snow_12" "nooo its making me solve this dumb captcha">>
+<<textmessage "Snow_12" "bro help">>
+
+<<setOptionActive "1">>
+
+===
+
+title: 4
+---
+<<textmessage "You" "correct answer">>
+<<textmessage "You" "that’s literally so easy why r u asking me">>
+<<textmessage "Snow_12" "sry im a bit lazy :p">>
+<<textmessage "Snow_12" "no actually im finding my charger rn">>
+<<textmessage "Snow_12" "ayyy im in">>
+<<textmessage "Snow_12" "here i can send u a buff pick one">>
+
+<<setOptionActive "2">>
+
+===
+
+title: 5
+---
+<<textmessage "You" "omg thanks finally">>
+<<setdifficulty "hard">>
+<<wait 20>>
+<<setdifficulty "easy">>
+
+<<setOptionActive "0">>
+
+===
+
+title: 6
+---
+<<textmessage "You" "phew ok finally can you send me another buff">>
+<<textmessage "Snow_12" "uh">>
+
+<<setOptionActive "0">>
+
+===
+
+title: 7
+---
+<<textmessage "You" "don't tell me your toaster died again">>
+<<textmessage "Snow_12" "well">>
+<<textmessage "Snow_12" "my mouse is drifting on its own T^T">>
+
+<<setOptionActive "0">>
+
+===
+
+title: 8
+---
+<<textmessage "You" "unplug and replug- oldest trick in the book">>
+<<textmessage "Snow_12" "aight hang on">>
+<<textmessage "Snow_12" "welp it logged me out">>
+<<textmessage "Snow_12" "it’s making me do another captcha what">>
+<<textmessage "Snow_12" "what even is this???">>
+
+<<setOptionActive "1">>
+
+===
+
+title: 9
+---
+<<textmessage "Snow_12" "hooray that was right but what">>
+<<textmessage "Snow_12" "bro it just gave me another captcha?">>
+<<textmessage "Snow_12" "due to repeated logins in a short amount of time apparently">>
+<<textmessage "Snow_12" "sorry help me out here">>
+
+<<setOptionActive "1">>
+
+===
+
+title: 10
+---
+<<textmessage "Snow_12" "ty bro ur saving my ass">>
+<<textmessage "Snow_12" "back in the game again!">>
+<<textmessage "Snow_12" "buff time?">>
+
+<<setOptionActive "3">>
+
+===
+
+title: 11
+---
+<<setdifficulty "hard">>
+<<wait 20>>
+<<setdifficulty "easy">>
+<<textmessage "Snow_12" "omg i still in the game here lemme give you another buff">>
+<<textmessage "Snow_12" "pick pick">>
+
+<<setOptionActive "2">>
+
+===
+
+title: 12
+---
+<<setdifficulty "hard">>
+<<wait 20>>
+<<setdifficulty "easy">>
+<<textmessage "Snow_12" "yo my ping just hit 900">>
+<<textmessage "Snow_12" "i’m teleporting around the screen it’s lowkey kinda funny">>
+
+<<setOptionActive "0">>
+
+===
+
+title: 13
+---
+<<textmessage "You" "did u start microwaving a burrito again">>
+<<textmessage "Snow_12" "no">>
+<<textmessage "Snow_12" "don’t call me out like that tho">>
+<<textmessage "Snow_12" "but my brother’s streaming anime on 4K again">>
+<<textmessage "Snow_12" "should i switch to mobile hotspot or try that vpn thing u sent?">>
+
+<<setOptionActive "0">>
+
+===
+
+title: 14
+---
+<<textmessage "You" "vpn + ethernet if u can">>
+<<textmessage "Snow_12" "ok booting up vpn on my laptop">>
+<<textmessage "Snow_12" "ah but i need membership">>
+
+<<setOptionActive "0">>
+
+===
+
+title: 15
+---
+<<textmessage "You" "you can just borrow my acct">>
+<<textmessage "You" "heres the login">>
+<<textmessage "Snow_12" "ok ok">>
+<<textmessage "Snow_12" "but seriously why does this login also need captcha">>
+<<textmessage "Snow_12" "this is like the 100th captcha in the past 5 minutes">>
+
+<<setOptionActive "1">>
+
+===
+
+title: 16
+---
+<<textmessage "You" "thanks!">>
+<<textmessage "Snow_12" "tysm vpn is on!">>
+<<textmessage "Snow_12" "ah but logging into the game needs the captchas again">>
+<<textmessage "Snow_12" "you know the drill">>
+
+<<setOptionActive "1">>
+
+===
+
+title: 17
+---
+<<textmessage "Snow_12" "another one">>
+
+<<setOptionActive "1">>
+
+===
+
+title: 18
+---
+<<textmessage "You" "thanks!">>
+<<textmessage "Snow_12" "LET’S GOOO">>
+<<textmessage "Snow_12" "ping dropped to 50">>
+<<textmessage "Snow_12" "i’m BACK">>
+<<textmessage "Snow_12" "you are IT support genius">>
+<<textmessage "Snow_12" "stable internet has never been more lovely">>
+<<textmessage "Snow_12" "here here lemme send you some crazy buffs">>
+<<textmessage "Snow_12" "i’ll spend my limited tokens to give you more">>
+<<textmessage "Snow_12" "it will actually be depressing to lose here">>
+
+<<setOptionActive "2">>
+
+===
+
+title: 19
+---
+
+<<setOptionActive "3">>
+
+===
+
+title: 20
+---
+
+<<setOptionActive "2">>
+
+===
+
+title: 21
+---
+<<textmessage "You" "holy shit ty">>
+<<textmessage "You" "okay this is it">>
+<<textmessage "You" "last wave">>
+<<textmessage "You" "stay connected, pls">>
+<<textmessage "Snow_12" "no promises">>
+<<textmessage "Snow_12" "but i’m READY">>
+<<textmessage "Snow_12" "WE MELTING THESE FOOLS TOGETHER FOREVERRR">>
+<<setdifficulty "hard">>
+<<wait 30>>
+<<setdifficulty "easy">>
+<<textmessage "Snow_12" "LET’S">>
+<<textmessage "Snow_12" "FREAKING">>
+<<textmessage "Snow_12" "GOOOOOOOO">>
+
+<<setOptionActive "0">>
+
+===
+
+title: 22
+---
+<<textmessage "You" "ggs">>
+<<textmessage "You" "pls fix ur PC tho">>
+<<textmessage "You" "i aged 5 years">>
+<<textmessage "Snow_12" "worth it">>
+<<textmessage "Snow_12" "same time tmrw?">>
+
+<<setOptionActive "0">>
+
+===
+
+title: 23
+---
+<<textmessage "You" "lol bet">>
 
 ===
 

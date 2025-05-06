@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: test2
   m_EditorClassIdentifier: 
   option1: this
-  node1: KeepPlaying
+  node1: 2
   numOfInput1: 4
   input1: 010000000200000004000000030000000000000000000000
   option2: is a

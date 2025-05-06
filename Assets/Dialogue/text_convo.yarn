@@ -22,6 +22,9 @@ title: 2
 ---
 <<textmessage "You" "ctrl + shift + esc">>
 <<textmessage "Snow_12" "omg tysm tech wizard">>
+<<setdifficulty "hard">>
+<<wait 20>>
+<<setdifficulty "easy">>
 <<textmessage "Snow_12" "ok wait i fixed it">>
 <<textmessage "Snow_12" "but">>
 <<textmessage "Snow_12" "now it says 'lost connection to server'???">>
@@ -35,7 +38,7 @@ title: 3
 <<textmessage "You" "ain’t no way ToT">>
 <<textmessage "Snow_12" "sorry sorry lemme try rejoining">>
 <<textmessage "Snow_12" "nooo its making me solve this dumb captcha">>
-<<textmessage "Snow_12" "bro help">>
+<<textmessagecaptcha "Snow_12" "bro help">>
 
 <<setOptionActive "1">>
 
@@ -67,7 +70,8 @@ title: 5
 
 title: 6
 ---
-<<textmessage "You" "phew ok finally can you send me another buff">>
+<<increasediff 0.5>>
+<<textmessage "You" "phew ok finally can you send me another">>
 <<textmessage "Snow_12" "uh">>
 
 <<setOptionActive "0">>
@@ -90,7 +94,7 @@ title: 8
 <<textmessage "Snow_12" "aight hang on">>
 <<textmessage "Snow_12" "welp it logged me out">>
 <<textmessage "Snow_12" "it’s making me do another captcha what">>
-<<textmessage "Snow_12" "what even is this???">>
+<<textmessagecaptcha "Snow_12" "what even is this???">>
 
 <<setOptionActive "1">>
 
@@ -101,7 +105,7 @@ title: 9
 <<textmessage "Snow_12" "hooray that was right but what">>
 <<textmessage "Snow_12" "bro it just gave me another captcha?">>
 <<textmessage "Snow_12" "due to repeated logins in a short amount of time apparently">>
-<<textmessage "Snow_12" "sorry help me out here">>
+<<textmessagecaptcha "Snow_12" "sorry help me out here">>
 
 <<setOptionActive "1">>
 
@@ -122,6 +126,7 @@ title: 11
 <<setdifficulty "hard">>
 <<wait 20>>
 <<setdifficulty "easy">>
+<<increasediff 0.5>>
 <<textmessage "Snow_12" "omg i still in the game here lemme give you another buff">>
 <<textmessage "Snow_12" "pick pick">>
 
@@ -169,7 +174,7 @@ title: 15
 <<textmessage "You" "heres the login">>
 <<textmessage "Snow_12" "ok ok">>
 <<textmessage "Snow_12" "but seriously why does this login also need captcha">>
-<<textmessage "Snow_12" "this is like the 100th captcha in the past 5 minutes">>
+<<textmessagecaptcha "Snow_12" "this is like the 100th captcha in the past 5 minutes">>
 
 <<setOptionActive "1">>
 
@@ -180,7 +185,7 @@ title: 16
 <<textmessage "You" "thanks!">>
 <<textmessage "Snow_12" "tysm vpn is on!">>
 <<textmessage "Snow_12" "ah but logging into the game needs the captchas again">>
-<<textmessage "Snow_12" "you know the drill">>
+<<textmessagecaptcha "Snow_12" "you know the drill">>
 
 <<setOptionActive "1">>
 
@@ -188,7 +193,7 @@ title: 16
 
 title: 17
 ---
-<<textmessage "Snow_12" "another one">>
+<<textmessagecaptcha "Snow_12" "another one">>
 
 <<setOptionActive "1">>
 
@@ -234,6 +239,7 @@ title: 21
 <<textmessage "Snow_12" "but i’m READY">>
 <<textmessage "Snow_12" "WE MELTING THESE FOOLS TOGETHER FOREVERRR">>
 <<setdifficulty "hard">>
+<<increasediff 1>>
 <<wait 30>>
 <<setdifficulty "easy">>
 <<textmessage "Snow_12" "LET’S">>

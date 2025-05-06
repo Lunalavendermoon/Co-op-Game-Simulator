@@ -960,7 +960,7 @@ MonoBehaviour:
   input4_3: {fileID: 1440385441}
   input4_4: {fileID: 1642692306}
   input4_5: {fileID: 240037325}
-  dialogueOption: {fileID: 11400000, guid: 70aff79032825e541bc472c4dc365675, type: 2}
+  dialogueOption: {fileID: 11400000, guid: aebf7534109b2b443ae652d3ec7fc5c5, type: 2}
   optionPrefab: {fileID: 1279608848}
   optionBox1: {fileID: 0}
   optionBox2: {fileID: 0}
@@ -2095,6 +2095,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1947859980288825084, guid: 1cdd442511f8f084289e9b379f98c8ab, type: 3}
   m_PrefabInstance: {fileID: 4943081258431075146}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1548504919 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7738400217712204659, guid: 1cdd442511f8f084289e9b379f98c8ab, type: 3}
+  m_PrefabInstance: {fileID: 4943081258431075146}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ff92fd365423c4eb6dba017250ef35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1564854481 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7294626202627875651, guid: 9e955f95a6d920b4a9971e6a3e445323, type: 3}
@@ -2422,7 +2433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27d016800a3bc841b5ec6edf9e074b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawner: {fileID: 7738400217712204659, guid: 1cdd442511f8f084289e9b379f98c8ab, type: 3}
+  spawner: {fileID: 1548504919}
   enemyPrefab: {fileID: 2018281582103248044, guid: 4fdb2c7efddc73f41acb0fd229c94ea8, type: 3}
   bulletPrefab: {fileID: 7461178504241549071, guid: 849070c54059e5b4fa2e5083a35db824, type: 3}
   shooter: {fileID: 1443449122}
@@ -3893,10 +3904,6 @@ PrefabInstance:
     - target: {fileID: 4302243703248816168, guid: 1cdd442511f8f084289e9b379f98c8ab, type: 3}
       propertyPath: m_Name
       value: EnemySpawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 7738400217712204659, guid: 1cdd442511f8f084289e9b379f98c8ab, type: 3}
-      propertyPath: spawnInterval
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

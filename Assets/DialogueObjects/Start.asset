@@ -27,7 +27,7 @@ MonoBehaviour:
   option4: yeah
   node4: 1
   numOfInput4: 2
-  input4: 0200000001000000000000000000000000000000
+  input4: 0100000001000000000000000000000000000000
   nextOptions:
   - {fileID: 0}
   - {fileID: 0}

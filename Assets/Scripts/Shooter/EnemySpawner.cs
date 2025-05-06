@@ -33,6 +33,7 @@ public class EnemySpawner : MonoBehaviour
     // Call this method to update the interval
     public void UpdateSpawnInterval(float newInterval)
     {
+        Debug.Log($"Updating spawn interval to {newInterval}");
         spawnInterval = newInterval;
 
         if (spawnCoroutine != null)

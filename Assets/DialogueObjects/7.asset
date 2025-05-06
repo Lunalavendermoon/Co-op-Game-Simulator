@@ -15,22 +15,22 @@ MonoBehaviour:
   option1: 
   node1: 
   numOfInput1: 0
-  input1: 
+  input1: 0000000000000000000000000000000000000000
   option2: 
   node2: 
   numOfInput2: 0
-  input2: 
+  input2: 0000000000000000000000000000000000000000
   option3: 
   node3: 
   numOfInput3: 0
-  input3: 
+  input3: 0000000000000000000000000000000000000000
   option4: unplug and replug
   node4: 8
   numOfInput4: 2
-  input4: 010000000100000000000000
+  input4: 0100000001000000000000000000000000000000
   nextOptions:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 11400000, guid: 91ca63282c108ec458169698c760b42b, type: 2}
+  - {fileID: 11400000, guid: f2800ca63f72ed841b7ad67c1c01c50a, type: 2}
   numberOfInput: 0

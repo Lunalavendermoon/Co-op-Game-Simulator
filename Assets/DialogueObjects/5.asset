@@ -15,22 +15,22 @@ MonoBehaviour:
   option1: 
   node1: 
   numOfInput1: 0
-  input1: 
+  input1: 0000000000000000000000000000000000000000
   option2: 
   node2: 
   numOfInput2: 0
-  input2: 
+  input2: 0000000000000000000000000000000000000000
   option3: 
   node3: 
   numOfInput3: 0
-  input3: 
+  input3: 0000000000000000000000000000000000000000
   option4: send another buff
   node4: 6
   numOfInput4: 2
-  input4: 020000000100000000000000
+  input4: 0200000001000000000000000000000000000000
   nextOptions:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 11400000, guid: 06b1d866b0ec77543ae84e9b4f178803, type: 2}
+  - {fileID: 11400000, guid: c2cb56bb1e89b6d4c81b5f8e5aa8eea4, type: 2}
   numberOfInput: 0

@@ -39,4 +39,11 @@ public static class YarnTextMessageCommands
         var manager = GameObject.FindObjectOfType<ShooterManager>();
         manager.SetShooterState(diff);
     }
+    
+    [YarnCommand("increasediff")]
+    public static void IncreaseDifficulty(float amt) {
+        var manager = GameObject.FindObjectOfType<ShooterManager>();
+        manager.IncreaseDifficulty(amt);
+    }
+
 }

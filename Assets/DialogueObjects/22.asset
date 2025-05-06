@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 39fafc8a0e3e1df4e94f78894479f4f8, type: 3}
-  m_Name: 1
+  m_Name: 22
   m_EditorClassIdentifier: 
   option1: 
   node1: 
@@ -24,13 +24,13 @@ MonoBehaviour:
   node3: 
   numOfInput3: 0
   input3: 0000000000000000000000000000000000000000
-  option4: ctrl + shift + esc
-  node4: 2
+  option4: yeah
+  node4: 23
   numOfInput4: 2
   input4: 0100000001000000000000000000000000000000
   nextOptions:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 11400000, guid: 2b175b6f39ef4484c90885f0253821c3, type: 2}
+  - {fileID: 0}
   numberOfInput: 0

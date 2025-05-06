@@ -15,22 +15,22 @@ MonoBehaviour:
   option1: 
   node1: 
   numOfInput1: 0
-  input1: 
+  input1: 0000000000000000000000000000000000000000
   option2: 
   node2: 
   numOfInput2: 0
-  input2: 
+  input2: 0000000000000000000000000000000000000000
   option3: 
   node3: 
   numOfInput3: 0
-  input3: 
+  input3: 0000000000000000000000000000000000000000
   option4: did u use microwave
   node4: 13
   numOfInput4: 2
-  input4: 
+  input4: 0100000001000000000000000000000000000000
   nextOptions:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 60cf8e0e8c653984e956b4592a90d102, type: 2}
   numberOfInput: 0

@@ -67,9 +67,11 @@ public class DialogueOption : MonoBehaviour
 
     int countInput = -1;
     int playerInput;
+    int optionNumber;
 
     bool isFirstInput = true;
     bool canInput = false;
+    bool finish = false;
     static bool haveClear = true;
     [SerializeField] static int mode = 0; // mode0 = scritable object mode | mode1 = captcha mode | mode2 = upgrade | mode3 = oneTimeSkill
     int lineTypingOn = 0;
@@ -138,10 +140,10 @@ public class DialogueOption : MonoBehaviour
         }
 
 
-        if (dialogueOption.numberOfInput >= 1) { optionBox4.SetActive(true); };
-        if (dialogueOption.numberOfInput >= 2) { optionBox3.SetActive(true); };
-        if (dialogueOption.numberOfInput >= 3) { optionBox2.SetActive(true); };
-        if (dialogueOption.numberOfInput >= 4) { optionBox1.SetActive(true); };
+        if (dialogueOption.numberOfInput >= 1) { optionBox1.SetActive(true); };
+        if (dialogueOption.numberOfInput >= 2) { optionBox2.SetActive(true); };
+        if (dialogueOption.numberOfInput >= 3) { optionBox3.SetActive(true); };
+        if (dialogueOption.numberOfInput >= 4) { optionBox4.SetActive(true); };
 
         if (optionPrefab.activeSelf && !haveClear)
         {
@@ -182,10 +184,12 @@ public class DialogueOption : MonoBehaviour
 
         if (mode == 0)
         {
+            optionNumber = dialogueOption.numberOfInput;
             recieveRegularOption();
         }
         else if (mode == 2)
         {
+            optionNumber = 3;
             option2.text = "Enhance shooting!!!";
             option3.text = "Enhance damage!!!";
             option4.text = "Shoot more colum!!!";
@@ -210,6 +214,7 @@ public class DialogueOption : MonoBehaviour
                 option3.text = "Activate laser!!!";
                 option4.text = "Activate homing!!!";
             }
+            optionNumber = 4;
             inputs1[0].text = convertToText(1);
             inputs2[0].text = convertToText(2);
             inputs3[0].text = convertToText(3);
@@ -241,9 +246,9 @@ public class DialogueOption : MonoBehaviour
         }
     }
 
-    void createRandomInputs(int difficulty, int optionNumber)
+    void createRandomInputs(int difficulty, int optionNum)
     {
-        if (optionNumber == 4)
+        if (optionNum == 4)
         {
             for (int i = 1; i <= difficulty + 1; i++)
             {
@@ -258,7 +263,7 @@ public class DialogueOption : MonoBehaviour
             inputNum3 = difficulty + 2;
             inputNum4 = difficulty + 2;
         }
-        if (optionNumber == 3)
+        if (optionNum == 3)
         {
             for (int i = 1; i <= difficulty + 1; i++)
             {
@@ -376,16 +381,16 @@ public class DialogueOption : MonoBehaviour
                 dialogueRunner.StartDialogue(dialogueOption.GetNode4());
             }
             dialogueOption = dialogueOption.GetSelection(next);
-            optionPrefab.SetActive(false);
-
+            finish = true;
         }
         if (mode == 1)
         {
-            if (lineTypingOn == 1)
+            if (lineTypingOn == YarnTextMessageCommands.captchaAnswer || YarnTextMessageCommands.captchaValue == 9)
             {
+                dialogueRunner.StartDialogue(catpachaList[countCaptcha].ToString());
+                countCaptcha++;
                 countWin++;
-                dialogueRunner.StartDialogue("captchaCorrect");
-                optionPrefab.SetActive(false);
+                finish = true;
             }
             else
             {
@@ -395,20 +400,31 @@ public class DialogueOption : MonoBehaviour
         }
         if (mode == 2)
         {
+            dialogueRunner.StartDialogue(skillList[countSkill].ToString());
+            countSkill++;
             if (lineTypingOn == 2) { player.BuffShootingSpd(); }
             if (lineTypingOn == 3) { player.BuffShootingDmg(); }
             if (lineTypingOn == 4) { player.BuffShootingColumn(); }
-            optionPrefab.SetActive(false);
-
+            finish = true;
         }
         if (mode == 3)
         {
+            dialogueRunner.StartDialogue(upgradeList[countUpgarde].ToString());
+            countUpgarde++;
             if (lineTypingOn == 1) { player.ActivateBomb(); }
             if (lineTypingOn == 2) { player.RecoverHealth(); }
             if (lineTypingOn == 3) { player.ActivateLaser(); }
             if (lineTypingOn == 4) { player.ActivateHoming(); }
-            optionPrefab.SetActive(false);
+            finish = true;
+        }
 
+        if (finish)
+        {
+            optionBox1.SetActive(true);
+            optionBox2.SetActive(true);
+            optionBox3.SetActive(true);
+            optionBox4.SetActive(true);
+            optionPrefab.SetActive(false);
         }
     }
 

@@ -44,6 +44,7 @@ public class DialogueOption : MonoBehaviour
     List<TextMeshProUGUI> inputs4 = new List<TextMeshProUGUI>();
 
     [SerializeField] SelectionScriptableObject dialogueOption;
+    static int numberOfInputStatic;
     [SerializeField] GameObject optionPrefab;
     [SerializeField] BuffManager player;
 
@@ -77,11 +78,18 @@ public class DialogueOption : MonoBehaviour
     int lineTypingOn = 0;
     int difficulty = 1;
     int countWin = 0;
-    const int dialogueOptionHeight = 100;
+    const int dialogueOptionHeight = 150;
 
     void Start()
     {
         optionPrefab.SetActive(false);
+        optionBox1.SetActive(false);
+        optionBox2.SetActive(false);
+        optionBox3.SetActive(false);
+        optionBox4.SetActive(false);
+
+        numberOfInputStatic = dialogueOption == null ? 0 : dialogueOption.numberOfInput;
+
         // put all options into corresponding lists
         inputs1.Add(input1_1);
         inputs1.Add(input1_2);
@@ -140,10 +148,12 @@ public class DialogueOption : MonoBehaviour
         }
 
 
-        if (dialogueOption.numberOfInput >= 1) { optionBox1.SetActive(true); };
-        if (dialogueOption.numberOfInput >= 2) { optionBox2.SetActive(true); };
-        if (dialogueOption.numberOfInput >= 3) { optionBox3.SetActive(true); };
-        if (dialogueOption.numberOfInput >= 4) { optionBox4.SetActive(true); };
+        Debug.Log("###### " + dialogueOption.numberOfInput);
+
+        if (dialogueOption.numberOfInput >= 1) { optionBox4.SetActive(true); };
+        if (dialogueOption.numberOfInput >= 2) { optionBox3.SetActive(true); };
+        if (dialogueOption.numberOfInput >= 3) { optionBox2.SetActive(true); };
+        if (dialogueOption.numberOfInput >= 4) { optionBox1.SetActive(true); };
 
         if (optionPrefab.activeSelf && !haveClear)
         {
@@ -346,7 +356,7 @@ public class DialogueOption : MonoBehaviour
 
         // TODO resize message container
         messageContainerRect.sizeDelta = new Vector2(messageContainerRect.sizeDelta.x,
-                messageContainerRect.sizeDelta.y - 3 * dialogueOptionHeight);
+                messageContainerRect.sizeDelta.y - dialogueOption.numberOfInput * dialogueOptionHeight);
     }
 
 
@@ -381,6 +391,7 @@ public class DialogueOption : MonoBehaviour
                 dialogueRunner.StartDialogue(dialogueOption.GetNode4());
             }
             dialogueOption = dialogueOption.GetSelection(next);
+            numberOfInputStatic = dialogueOption.numberOfInput;
             finish = true;
         }
         if (mode == 1)
@@ -420,10 +431,10 @@ public class DialogueOption : MonoBehaviour
 
         if (finish)
         {
-            optionBox1.SetActive(true);
-            optionBox2.SetActive(true);
-            optionBox3.SetActive(true);
-            optionBox4.SetActive(true);
+            optionBox1.SetActive(false);
+            optionBox2.SetActive(false);
+            optionBox3.SetActive(false);
+            optionBox4.SetActive(false);
             optionPrefab.SetActive(false);
         }
     }
@@ -434,20 +445,20 @@ public class DialogueOption : MonoBehaviour
     [YarnCommand("setOptionActive")]
     public static void ShowSelection(int newMode)
     {
-        var dialogueOption = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport/MessageContent/Dialogue Option");
-        dialogueOption.SetActive(true);
+        var dialogOption = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport/Dialogue Option");
+        dialogOption.SetActive(true);
 
         mode = newMode;
         haveClear = false; 
 
-        dialogueOption.transform.SetSiblingIndex(dialogueOption.transform.parent.transform.childCount + 1);
+        // dialogOption.transform.SetSiblingIndex(dialogOption.transform.parent.transform.childCount + 1);
 
-        // TODO resize messageContainer based on number of dialogue options (how do we check amount of options?)
+        // TODO resize messageContainer based on number of dialogue options
         var msgContent = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport/MessageContent");
         RectTransform messageContainer = msgContent.GetComponent<RectTransform>();
 
         messageContainer.sizeDelta = new Vector2(messageContainer.sizeDelta.x,
-                messageContainer.sizeDelta.y + 3 * dialogueOptionHeight);
+                messageContainer.sizeDelta.y + numberOfInputStatic * dialogueOptionHeight);
     }
 }
 

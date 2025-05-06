@@ -3332,6 +3332,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuffTesting
       objectReference: {fileID: 0}
+    - target: {fileID: 6698266514693769407, guid: f5051ab7e971c3a43a7209df5b5d6fcd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6847041934782332674, guid: f5051ab7e971c3a43a7209df5b5d6fcd, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

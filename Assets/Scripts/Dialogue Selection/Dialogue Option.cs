@@ -6,6 +6,7 @@ using UnityEngine;
 using Yarn.Unity;
 using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
+using UnityEngine.UI;
 
 public class DialogueOption : MonoBehaviour
 {
@@ -46,6 +47,11 @@ public class DialogueOption : MonoBehaviour
     [SerializeField] SelectionScriptableObject dialogueOption;
     [SerializeField] GameObject optionPrefab;
 
+    [SerializeField] Image optionBox1;
+    [SerializeField] Image optionBox2;
+    [SerializeField] Image optionBox3;
+    [SerializeField] Image optionBox4;
+
     int inputNum1;
     int inputNum2;
     int inputNum3;
@@ -56,7 +62,7 @@ public class DialogueOption : MonoBehaviour
 
     bool isFirstInput = true;
     bool canInput = false;
-    [SerializeField] int mode = 0; // mode0 = scritable object mode | mode1 = captcha mode | mode2 = skill/powerUps mode
+    [SerializeField] int mode = 0; // mode0 = scritable object mode | mode1 = captcha mode | mode2 = upgrade | mode3 = oneTimeSkill
     int lineTypingOn = 0;
     int difficulty = 1;
     int countWin = 0;
@@ -133,10 +139,10 @@ public class DialogueOption : MonoBehaviour
         option2.text = "";
         option3.text = "";
         option4.text = "";
-        option1.color = Color.white;
-        option2.color = Color.white;
-        option3.color = Color.white;
-        option4.color = Color.white;
+        option1.color = new Color (0.455f, 0.980f, 0.992f, 1f);
+        option2.color = new Color (0.455f, 0.980f, 0.992f, 1f);
+        option3.color = new Color (0.455f, 0.980f, 0.992f, 1f);
+        option4.color = new Color (0.455f, 0.980f, 0.992f, 1f);
 
         for (int i = 0; i < 5; i++)
         {
@@ -144,16 +150,26 @@ public class DialogueOption : MonoBehaviour
             inputs2[i].text = "";
             inputs3[i].text = "";
             inputs4[i].text = "";
-            inputs1[i].color = Color.white;
-            inputs2[i].color = Color.white;
-            inputs3[i].color = Color.white;
-            inputs4[i].color = Color.white;
+            inputs1[i].color = new Color (0.455f, 0.980f, 0.992f, 1f);
+            inputs2[i].color = new Color (0.455f, 0.980f, 0.992f, 1f);
+            inputs3[i].color = new Color (0.455f, 0.980f, 0.992f, 1f);
+            inputs4[i].color = new Color (0.455f, 0.980f, 0.992f, 1f);
         }
 
 
         if (mode == 0)
         {
             recieveRegularOption();
+        }
+        else if (mode == 2)
+        {
+            option2.text = "skill-1";
+            option3.text = "skill-2";
+            option4.text = "skill-3";
+            inputs2[0].text = convertToText(2);
+            inputs3[0].text = convertToText(1);
+            inputs4[0].text = convertToText(4);
+            createRandomInputs(difficulty);
         }
         else if (mode == 1)
         {
@@ -226,18 +242,18 @@ public class DialogueOption : MonoBehaviour
 
     string convertToText(int input)
     {
-        if (input == 1)        {return "u";}
-        else if (input == 2)   {return "d";}
-        else if (input == 3)   {return "l";}
-        else if (input == 4)   {return "r";}
+        if (input == 1)        {return "¡ü";}
+        else if (input == 2)   {return "¡ý";}
+        else if (input == 3)   {return "¡û";}
+        else if (input == 4)   {return "¡ú";}
         else                   {return "";}
     }
     int convertToInt(string input)
     {
-        if (input == "u")      { return 1; }
-        else if (input == "d") { return 2; }
-        else if (input == "l") { return 3; }
-        else if (input == "r") { return 4; }
+        if      (input == "¡ü") { return 1; }
+        else if (input == "¡ý") { return 2; }
+        else if (input == "¡û") { return 3; }
+        else if (input == "¡ú") { return 4; }
         else                   { return 0; }
     }
 
@@ -302,7 +318,7 @@ public class DialogueOption : MonoBehaviour
         isFirstInput = false;
         lineTypingOn = line;
         arrowText.text = "<b>" + arrowText.text + "</b>";
-        arrowText.color = new Color(1f, 0.502f, 0.976f, 1f);
+        arrowText.color = Color.yellow;
     }
     
     void inputSuccess(int next)

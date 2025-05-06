@@ -284,18 +284,18 @@ public class DialogueOption : MonoBehaviour
 
     string convertToText(int input)
     {
-        if (input == 1)        {return "¡ü";}
-        else if (input == 2)   {return "¡ý";}
-        else if (input == 3)   {return "¡û";}
-        else if (input == 4)   {return "¡ú";}
+        if (input == 1)        {return "ï¿½ï¿½";}
+        else if (input == 2)   {return "ï¿½ï¿½";}
+        else if (input == 3)   {return "ï¿½ï¿½";}
+        else if (input == 4)   {return "ï¿½ï¿½";}
         else                   {return "";}
     }
     int convertToInt(string input)
     {
-        if      (input == "¡ü") { return 1; }
-        else if (input == "¡ý") { return 2; }
-        else if (input == "¡û") { return 3; }
-        else if (input == "¡ú") { return 4; }
+        if      (input == "ï¿½ï¿½") { return 1; }
+        else if (input == "ï¿½ï¿½") { return 2; }
+        else if (input == "ï¿½ï¿½") { return 3; }
+        else if (input == "ï¿½ï¿½") { return 4; }
         else                   { return 0; }
     }
 
@@ -443,8 +443,8 @@ public class DialogueOption : MonoBehaviour
         dialogueOption.transform.SetSiblingIndex(dialogueOption.transform.parent.transform.childCount + 1);
 
         // TODO resize messageContainer based on number of dialogue options (how do we check amount of options?)
-        var msgCont = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport/MessageContent");
-        RectTransform messageContainer = msgCont.GetComponent<RectTransform>();
+        var msgContent = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport/MessageContent");
+        RectTransform messageContainer = msgContent.GetComponent<RectTransform>();
 
         messageContainer.sizeDelta = new Vector2(messageContainer.sizeDelta.x,
                 messageContainer.sizeDelta.y + 3 * dialogueOptionHeight);

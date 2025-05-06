@@ -3,7 +3,7 @@
 <<setdifficulty "easy">>
 <<textmessage "Snow_12" "yo are you in the game yet">>
 
-<<setOptionActive "0">>
+<<setOptionActive "1">>
 
 ===
 

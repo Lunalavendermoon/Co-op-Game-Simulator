@@ -52,6 +52,14 @@ public class DialogueOption : MonoBehaviour
     [SerializeField] GameObject optionBox3;
     [SerializeField] GameObject optionBox4;
 
+    List<int> catpachaList = new List<int> { 4, 9, 10, 16, 17, 18 };
+    List<int> upgradeList = new List<int> { 5, 12, 19, 21 };
+    List<int> skillList = new List<int> { 11, 20 };
+    int countCaptcha = 0;
+    int countUpgarde = 0;
+    int countSkill = 0;
+
+
     int inputNum1;
     int inputNum2;
     int inputNum3;
@@ -96,6 +104,7 @@ public class DialogueOption : MonoBehaviour
         inputs4.Add(input4_3);
         inputs4.Add(input4_4);
         inputs4.Add(input4_5);
+
         recieveNewOption();
     }
 
@@ -314,22 +323,18 @@ public class DialogueOption : MonoBehaviour
 
         if (lineTypingOn == 1 && countInput == inputNum1 - 1)
         {
-            dialogueRunner.StartDialogue(dialogueOption.GetNode1());
             inputSuccess(0);
         }
         else  if (lineTypingOn == 2 && countInput == inputNum2 - 1)
         {
-            dialogueRunner.StartDialogue(dialogueOption.GetNode2());
             inputSuccess(1);
         }
         else if (lineTypingOn == 3 && countInput == inputNum3 - 1)
         {
-            dialogueRunner.StartDialogue(dialogueOption.GetNode3());
             inputSuccess(2);
         }
         else if (lineTypingOn == 4 && countInput == inputNum4 - 1)
         {
-            dialogueRunner.StartDialogue(dialogueOption.GetNode4());
             inputSuccess(3);
         } 
         else {return;}
@@ -354,7 +359,25 @@ public class DialogueOption : MonoBehaviour
         AudioManager.Instance.PlaySFX("inputSuccess");
         if (mode == 0)
         {
+            if (lineTypingOn == 1)
+            {
+                dialogueRunner.StartDialogue(dialogueOption.GetNode1());
+            }
+            else if (lineTypingOn == 2)
+            {
+                dialogueRunner.StartDialogue(dialogueOption.GetNode2());
+            }
+            else if (lineTypingOn == 3)
+            {
+                dialogueRunner.StartDialogue(dialogueOption.GetNode3());
+            }
+            else if (lineTypingOn == 4)
+            {
+                dialogueRunner.StartDialogue(dialogueOption.GetNode4());
+            }
             dialogueOption = dialogueOption.GetSelection(next);
+            optionPrefab.SetActive(false);
+
         }
         if (mode == 1)
         {
@@ -362,10 +385,12 @@ public class DialogueOption : MonoBehaviour
             {
                 countWin++;
                 dialogueRunner.StartDialogue("captchaCorrect");
+                optionPrefab.SetActive(false);
             }
             else
             {
                 dialogueRunner.StartDialogue("captchaIncorrect");
+                recieveNewOption();
             }
         }
         if (mode == 2)
@@ -373,6 +398,8 @@ public class DialogueOption : MonoBehaviour
             if (lineTypingOn == 2) { player.BuffShootingSpd(); }
             if (lineTypingOn == 3) { player.BuffShootingDmg(); }
             if (lineTypingOn == 4) { player.BuffShootingColumn(); }
+            optionPrefab.SetActive(false);
+
         }
         if (mode == 3)
         {
@@ -380,8 +407,9 @@ public class DialogueOption : MonoBehaviour
             if (lineTypingOn == 2) { player.RecoverHealth(); }
             if (lineTypingOn == 3) { player.ActivateLaser(); }
             if (lineTypingOn == 4) { player.ActivateHoming(); }
+            optionPrefab.SetActive(false);
+
         }
-        optionPrefab.SetActive(false);
     }
 
 

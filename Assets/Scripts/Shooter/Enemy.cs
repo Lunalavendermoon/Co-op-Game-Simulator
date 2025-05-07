@@ -28,7 +28,6 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.down * speed * Time.deltaTime);
-        // TODO - idk if this line is necessary? are transforms updated in-place?
         AllPositions[this] = transform.position;
     }
 

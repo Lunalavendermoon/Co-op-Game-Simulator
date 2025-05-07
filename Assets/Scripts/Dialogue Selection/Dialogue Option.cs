@@ -425,6 +425,7 @@ public class DialogueOption : MonoBehaviour
             optionBox3.SetActive(true);
             optionBox4.SetActive(true);
             optionPrefab.SetActive(false);
+            finish = false;
         }
     }
 

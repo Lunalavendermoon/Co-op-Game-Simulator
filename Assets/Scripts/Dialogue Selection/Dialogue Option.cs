@@ -79,7 +79,7 @@ public class DialogueOption : MonoBehaviour
     int lineTypingOn = 0;
     int difficulty = 1;
     int countWin = 0;
-    const int dialogueOptionHeight = 150;
+    const int dialogueOptionHeight = 90;
 
     void Start()
     {

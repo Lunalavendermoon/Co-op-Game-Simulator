@@ -11,6 +11,7 @@ public class DialogueOption : MonoBehaviour
 {
     public DialogueRunner dialogueRunner;
     public RectTransform messageContainerRect;
+    public RectTransform messageViewportRect;
     [SerializeField] TextMeshProUGUI option1;
     [SerializeField] TextMeshProUGUI input1_1;
     [SerializeField] TextMeshProUGUI input1_2;
@@ -147,8 +148,6 @@ public class DialogueOption : MonoBehaviour
             countWin = 0;
         }
 
-
-        Debug.Log("###### " + dialogueOption.numberOfInput);
 
         if (dialogueOption.numberOfInput >= 1) { optionBox4.SetActive(true); };
         if (dialogueOption.numberOfInput >= 2) { optionBox3.SetActive(true); };
@@ -354,9 +353,11 @@ public class DialogueOption : MonoBehaviour
         } 
         else {return;}
 
-        // TODO resize message container
-        messageContainerRect.sizeDelta = new Vector2(messageContainerRect.sizeDelta.x,
-                messageContainerRect.sizeDelta.y - dialogueOption.numberOfInput * dialogueOptionHeight);
+        // messageContainerRect.sizeDelta = new Vector2(messageContainerRect.sizeDelta.x,
+        //         messageContainerRect.sizeDelta.y - dialogueOption.numberOfInput * dialogueOptionHeight);
+        
+        messageViewportRect.sizeDelta = new Vector2(messageViewportRect.sizeDelta.x,
+                messageViewportRect.sizeDelta.y + dialogueOption.numberOfInput * dialogueOptionHeight);
     }
 
 
@@ -446,20 +447,22 @@ public class DialogueOption : MonoBehaviour
     [YarnCommand("setOptionActive")]
     public static void ShowSelection(int newMode)
     {
-        var dialogOption = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport/Dialogue Option");
+        var dialogOption = GameObject.Find("/Dialogue/Canvas/Dialogue Option");
         dialogOption.SetActive(true);
 
         mode = newMode;
-        haveClear = false; 
+        haveClear = false;
 
-        // dialogOption.transform.SetSiblingIndex(dialogOption.transform.parent.transform.childCount + 1);
+        // var msgContent = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport/MessageContent");
+        // RectTransform messageContainer = msgContent.GetComponent<RectTransform>();
 
-        // TODO resize messageContainer based on number of dialogue options
-        var msgContent = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport/MessageContent");
-        RectTransform messageContainer = msgContent.GetComponent<RectTransform>();
+        // messageContainer.sizeDelta = new Vector2(messageContainer.sizeDelta.x,
+        //         messageContainer.sizeDelta.y + numberOfInputStatic * dialogueOptionHeight);
+        
+        var viewPort = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport");
+        RectTransform vp = viewPort.GetComponent<RectTransform>();
 
-        messageContainer.sizeDelta = new Vector2(messageContainer.sizeDelta.x,
-                messageContainer.sizeDelta.y + numberOfInputStatic * dialogueOptionHeight);
+        vp.sizeDelta = new Vector2(vp.sizeDelta.x, vp.sizeDelta.y - numberOfInputStatic * dialogueOptionHeight);
     }
 }
 

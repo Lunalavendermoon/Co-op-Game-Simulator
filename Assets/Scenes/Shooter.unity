@@ -424,6 +424,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8640479458218393168, guid: 6298819f227bd804594a430d6548cebb, type: 3}
   m_PrefabInstance: {fileID: 2098873144}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &209180210 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5349865221430625724, guid: 6298819f227bd804594a430d6548cebb, type: 3}
+  m_PrefabInstance: {fileID: 2098873144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &240037325 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6071729359753887417, guid: 6298819f227bd804594a430d6548cebb, type: 3}
@@ -968,6 +973,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueRunner: {fileID: 2098873145}
   messageContainerRect: {fileID: 1394092699}
+  messageViewportRect: {fileID: 209180210}
   option1: {fileID: 861021957}
   input1_1: {fileID: 1154183469}
   input1_2: {fileID: 643027620}
@@ -994,7 +1000,7 @@ MonoBehaviour:
   input4_5: {fileID: 240037325}
   dialogueOption: {fileID: 11400000, guid: aebf7534109b2b443ae652d3ec7fc5c5, type: 2}
   optionPrefab: {fileID: 1279608848}
-  player: {fileID: 0}
+  player: {fileID: 727716201}
   optionBox1: {fileID: 153819186}
   optionBox2: {fileID: 1870116639}
   optionBox3: {fileID: 496807145}
@@ -3072,11 +3078,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3170085919857197175, guid: 6298819f227bd804594a430d6548cebb, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 408.03
+      value: 1493.9
       objectReference: {fileID: 0}
     - target: {fileID: 3170085919857197175, guid: 6298819f227bd804594a430d6548cebb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 160.36182
+      value: 290
       objectReference: {fileID: 0}
     - target: {fileID: 3290586418574714213, guid: 6298819f227bd804594a430d6548cebb, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3241,6 +3247,14 @@ PrefabInstance:
     - target: {fileID: 5218560593462678215, guid: 6298819f227bd804594a430d6548cebb, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5349865221430625724, guid: 6298819f227bd804594a430d6548cebb, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 773.1686
+      objectReference: {fileID: 0}
+    - target: {fileID: 5349865221430625724, guid: 6298819f227bd804594a430d6548cebb, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -120.6694
       objectReference: {fileID: 0}
     - target: {fileID: 5451397499861930581, guid: 6298819f227bd804594a430d6548cebb, type: 3}
       propertyPath: m_AnchoredPosition.x

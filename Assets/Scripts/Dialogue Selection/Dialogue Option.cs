@@ -149,16 +149,17 @@ public class DialogueOption : MonoBehaviour
         }
 
 
-        if (dialogueOption.numberOfInput >= 1) { optionBox4.SetActive(true); };
-        if (dialogueOption.numberOfInput >= 2) { optionBox3.SetActive(true); };
-        if (dialogueOption.numberOfInput >= 3) { optionBox2.SetActive(true); };
-        if (dialogueOption.numberOfInput >= 4) { optionBox1.SetActive(true); };
+        if (optionNumber >= 1) { optionBox4.SetActive(true); };
+        if (optionNumber >= 2) { optionBox3.SetActive(true); };
+        if (optionNumber >= 3) { optionBox2.SetActive(true); };
+        if (optionNumber >= 4) { optionBox1.SetActive(true); };
 
         if (optionPrefab.activeSelf && !haveClear)
         {
             recieveNewOption();
             haveClear = true;
         }
+        numberOfInputStatic = optionNumber;
     }
 
 
@@ -357,7 +358,7 @@ public class DialogueOption : MonoBehaviour
         //         messageContainerRect.sizeDelta.y - dialogueOption.numberOfInput * dialogueOptionHeight);
         
         messageViewportRect.sizeDelta = new Vector2(messageViewportRect.sizeDelta.x,
-                messageViewportRect.sizeDelta.y + dialogueOption.numberOfInput * dialogueOptionHeight);
+                messageViewportRect.sizeDelta.y + optionNumber * dialogueOptionHeight);
     }
 
 
@@ -392,7 +393,6 @@ public class DialogueOption : MonoBehaviour
                 dialogueRunner.StartDialogue(dialogueOption.GetNode4());
             }
             dialogueOption = dialogueOption.GetSelection(next);
-            numberOfInputStatic = dialogueOption.numberOfInput;
             finish = true;
         }
         if (mode == 1)
@@ -462,7 +462,26 @@ public class DialogueOption : MonoBehaviour
         var viewPort = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport");
         RectTransform vp = viewPort.GetComponent<RectTransform>();
 
-        vp.sizeDelta = new Vector2(vp.sizeDelta.x, vp.sizeDelta.y - numberOfInputStatic * dialogueOptionHeight);
+        int numberOfInput;
+        switch (mode) {
+            case 0:
+                numberOfInput = numberOfInputStatic;
+                break;
+            case 1:
+                numberOfInput = 4;
+                break;
+            case 2:
+                numberOfInput = 2;
+                break;
+            case 3:
+                numberOfInput = 4;
+                break;
+            default:
+                numberOfInput = 1;
+                break;
+        }
+
+        vp.sizeDelta = new Vector2(vp.sizeDelta.x, vp.sizeDelta.y - numberOfInput * dialogueOptionHeight);
     }
 }
 

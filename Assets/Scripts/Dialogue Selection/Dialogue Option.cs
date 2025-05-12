@@ -354,11 +354,15 @@ public class DialogueOption : MonoBehaviour
         } 
         else {return;}
 
-        // messageContainerRect.sizeDelta = new Vector2(messageContainerRect.sizeDelta.x,
-        //         messageContainerRect.sizeDelta.y - dialogueOption.numberOfInput * dialogueOptionHeight);
         
         messageViewportRect.sizeDelta = new Vector2(messageViewportRect.sizeDelta.x,
                 messageViewportRect.sizeDelta.y + optionNumber * dialogueOptionHeight);
+        
+        optionPrefab.SetActive(false);
+        optionBox1.SetActive(false);
+        optionBox2.SetActive(false);
+        optionBox3.SetActive(false);
+        optionBox4.SetActive(false);
     }
 
 
@@ -452,12 +456,6 @@ public class DialogueOption : MonoBehaviour
 
         mode = newMode;
         haveClear = false;
-
-        // var msgContent = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport/MessageContent");
-        // RectTransform messageContainer = msgContent.GetComponent<RectTransform>();
-
-        // messageContainer.sizeDelta = new Vector2(messageContainer.sizeDelta.x,
-        //         messageContainer.sizeDelta.y + numberOfInputStatic * dialogueOptionHeight);
         
         var viewPort = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport");
         RectTransform vp = viewPort.GetComponent<RectTransform>();

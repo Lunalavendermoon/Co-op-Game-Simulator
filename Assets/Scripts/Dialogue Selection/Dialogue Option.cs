@@ -353,10 +353,14 @@ public class DialogueOption : MonoBehaviour
             inputSuccess(3);
         } 
         else {return;}
-
         
+
+        Debug.Log("Hide option Before: " + messageViewportRect.sizeDelta);
+
         messageViewportRect.sizeDelta = new Vector2(messageViewportRect.sizeDelta.x,
-                messageViewportRect.sizeDelta.y + optionNumber * dialogueOptionHeight);
+                messageViewportRect.sizeDelta.y + numberOfInputStatic * dialogueOptionHeight);
+
+        Debug.Log("Hide option After: " + messageViewportRect.sizeDelta);
         
         optionPrefab.SetActive(false);
         optionBox1.SetActive(false);
@@ -460,26 +464,28 @@ public class DialogueOption : MonoBehaviour
         var viewPort = GameObject.Find("/Dialogue/Canvas/MessageScrollBox/Viewport");
         RectTransform vp = viewPort.GetComponent<RectTransform>();
 
-        int numberOfInput;
         switch (mode) {
             case 0:
-                numberOfInput = numberOfInputStatic;
                 break;
             case 1:
-                numberOfInput = 4;
+                numberOfInputStatic = 4;
                 break;
             case 2:
-                numberOfInput = 2;
+                numberOfInputStatic = 3;
                 break;
             case 3:
-                numberOfInput = 4;
+                numberOfInputStatic = 3;
                 break;
             default:
-                numberOfInput = 1;
+                numberOfInputStatic = 1;
                 break;
         }
 
-        vp.sizeDelta = new Vector2(vp.sizeDelta.x, vp.sizeDelta.y - numberOfInput * dialogueOptionHeight);
+        Debug.Log("Show option Before: " + vp.sizeDelta);
+
+        vp.sizeDelta = new Vector2(vp.sizeDelta.x, vp.sizeDelta.y - numberOfInputStatic * dialogueOptionHeight);
+
+        Debug.Log("Show option After: " + vp.sizeDelta);
     }
 }
 

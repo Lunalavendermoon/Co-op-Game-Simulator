@@ -294,18 +294,18 @@ public class DialogueOption : MonoBehaviour
 
     string convertToText(int input)
     {
-        if (input == 1)        {return "��";}
-        else if (input == 2)   {return "��";}
-        else if (input == 3)   {return "��";}
-        else if (input == 4)   {return "��";}
+        if (input == 1)        {return "U";}
+        else if (input == 2)   {return "D";}
+        else if (input == 3)   {return "L";}
+        else if (input == 4)   {return "R";}
         else                   {return "";}
     }
     int convertToInt(string input)
     {
-        if      (input == "��") { return 1; }
-        else if (input == "��") { return 2; }
-        else if (input == "��") { return 3; }
-        else if (input == "��") { return 4; }
+        if      (input == "U") { return 1; }
+        else if (input == "D") { return 2; }
+        else if (input == "L") { return 3; }
+        else if (input == "R") { return 4; }
         else                   { return 0; }
     }
 

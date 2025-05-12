@@ -31,7 +31,7 @@ public static class YarnTextMessageCommands
     {
         captchaValue = Random.Range(1,11);
         var manager = GameObject.FindObjectOfType<TextMessageCommand>();
-        manager.SpawnImageMessage(sender, message, "Captchas/图片" + captchaValue);
+        manager.SpawnImageMessage(sender, message, "Captchas/" + captchaValue);
 
         if (captchaValue == 1 || captchaValue == 3 || captchaValue == 4 || captchaValue == 5 || captchaValue == 6)
         {

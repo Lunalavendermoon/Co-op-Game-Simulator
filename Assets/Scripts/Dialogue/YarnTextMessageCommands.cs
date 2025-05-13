@@ -2,11 +2,14 @@ using UnityEngine;
 using Yarn.Unity;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public static class YarnTextMessageCommands
 {
     public static int captchaValue;
     public static int captchaAnswer = 0;
+    public static List<int> captchaList = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
 
     [YarnCommand("textmessage")]
     public static IEnumerator ShowTextMessage(string sender, string message)
@@ -29,7 +32,8 @@ public static class YarnTextMessageCommands
     [YarnCommand("textmessagecaptcha")]
     public static IEnumerator ShowTextMessageCaptcha(string sender, string message)
     {
-        captchaValue = Random.Range(1,11);
+        captchaValue = captchaList[Random.Range(0, captchaList.Count)];
+        captchaList.Remove(captchaValue-1);
         var manager = GameObject.FindObjectOfType<TextMessageCommand>();
         manager.SpawnImageMessage(sender, message, "Captchas/" + captchaValue);
 

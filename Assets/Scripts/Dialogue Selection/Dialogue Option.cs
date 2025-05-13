@@ -51,6 +51,8 @@ public class DialogueOption : MonoBehaviour
     [SerializeField] GameObject optionBox3;
     [SerializeField] GameObject optionBox4;
 
+    [SerializeField] AudioSource OptionOn;
+
     List<int> catpachaList = new List<int> { 4, 9, 10, 16, 17, 18 };
     List<int> upgradeList = new List<int> { 5, 12, 19, 21 }; //upgrade 2
     List<int> skillList = new List<int> { 11, 20 }; //laser 3
@@ -188,6 +190,8 @@ public class DialogueOption : MonoBehaviour
             inputs4[0].text = convertToText(4);
             createRandomInputs(difficulty, 3);
         }
+
+
     }
 
 
@@ -220,6 +224,7 @@ public class DialogueOption : MonoBehaviour
         {
             recieveNewOption();
             haveClear = true;
+            OptionOn.Play();
             if (optionNumber >= 1) { optionBox4.SetActive(true); }
             if (optionNumber >= 2) { optionBox3.SetActive(true); }
             if (optionNumber >= 3) { optionBox2.SetActive(true); }
@@ -439,6 +444,8 @@ public class DialogueOption : MonoBehaviour
             optionBox3.SetActive(false);
             optionBox4.SetActive(false);
             finish = false;
+
+            OptionOn.Stop();
         }
     }
 

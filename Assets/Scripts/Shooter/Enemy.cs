@@ -65,7 +65,8 @@ public class Enemy : MonoBehaviour
                 {
                     TakeDamage(bullet.damage);
                     if(bullet.type != "laser"){
-                    Destroy(other.gameObject);}
+                        Destroy(other.gameObject);
+                    }
                 }
             }
         }

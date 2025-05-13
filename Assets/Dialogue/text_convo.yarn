@@ -50,7 +50,7 @@ title: 4
 <<textmessage "Snow_12" "ayyy im in">>
 <<textmessage "Snow_12" "here i can send u a buff pick one">>
 
-<<setOptionActive "3">>
+<<setOptionActive "2">>
 
 ===
 
@@ -127,7 +127,7 @@ title: 11
 <<textmessage "Snow_12" "omg i still in the game here lemme give you another buff">>
 <<textmessage "Snow_12" "pick pick">>
 
-<<setOptionActive "3">>
+<<setOptionActive "2">>
 
 ===
 
@@ -208,21 +208,21 @@ title: 18
 <<textmessage "Snow_12" "i’ll spend my limited tokens to give you more">>
 <<textmessage "Snow_12" "it will actually be depressing to lose here">>
 
-<<setOptionActive "2">>
+<<setOptionActive "3">>
 
 ===
 
 title: 19
 ---
 
-<<setOptionActive "3">>
+<<setOptionActive "2">>
 
 ===
 
 title: 20
 ---
 
-<<setOptionActive "2">>
+<<setOptionActive "3">>
 
 ===
 

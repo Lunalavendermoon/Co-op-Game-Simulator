@@ -401,8 +401,9 @@ public class DialogueOption : MonoBehaviour
         {
             Debug.Log("upgrade!");
 
-            dialogueRunner.StartDialogue(skillList[countSkill].ToString());
-            countSkill++;
+            dialogueRunner.StartDialogue(upgradeList[countUpgarde].ToString());
+            Debug.Log("starting dialogue with index " + countUpgarde + "and number: " + upgradeList[countUpgarde].ToString());
+            countUpgarde++;
             if (lineTypingOn == 2) { player.BuffShootingSpd(); }
             if (lineTypingOn == 3) { player.BuffShootingDmg(); }
             if (lineTypingOn == 4) { player.BuffShootingColumn(); }
@@ -412,8 +413,10 @@ public class DialogueOption : MonoBehaviour
         {
             Debug.Log("buff!");
 
-            dialogueRunner.StartDialogue(upgradeList[countUpgarde].ToString());
+            dialogueRunner.StartDialogue(skillList[countSkill].ToString());
+            Debug.Log("starting dialogue with index " + countSkill + "and number: " + skillList[countSkill].ToString());
             countUpgarde++;
+            countSkill++;
             if (lineTypingOn == 1) { player.ActivateBomb(); }
             if (lineTypingOn == 2) { player.RecoverHealth(); }
             if (lineTypingOn == 3) { player.ActivateLaser(); }
@@ -453,8 +456,8 @@ public class DialogueOption : MonoBehaviour
         RectTransform vp = viewPort.GetComponent<RectTransform>();
 
         switch (mode) {
-            case 0:
-                break;
+            // case 0:
+            //     break;
             case 1:
                 numberOfInputStatic = 4;
                 break;

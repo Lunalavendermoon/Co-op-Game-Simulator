@@ -286,18 +286,18 @@ public class DialogueOption : MonoBehaviour
     }
     string convertToText(int input)
     {
-        if (input == 1)        {return "U";}
-        else if (input == 2)   {return "D";}
-        else if (input == 3)   {return "L";}
-        else if (input == 4)   {return "R";}
+        if (input == 1)        {return "¡ü";}
+        else if (input == 2)   {return "¡ý";}
+        else if (input == 3)   {return "¡û";}
+        else if (input == 4)   {return "¡ú";}
         else                   {return "";}
     }
     int convertToInt(string input)
     {
-        if      (input == "U") { return 1; }
-        else if (input == "D") { return 2; }
-        else if (input == "L") { return 3; }
-        else if (input == "R") { return 4; }
+        if      (input == "¡ü") { return 1; }
+        else if (input == "¡ý") { return 2; }
+        else if (input == "¡û") { return 3; }
+        else if (input == "¡ú") { return 4; }
         else                   { return 0; }
     }
 
@@ -358,7 +358,7 @@ public class DialogueOption : MonoBehaviour
     
     void inputSuccess(int next)
     {
-        AudioManager.Instance.PlaySFX("inputSuccess");
+        
         if (mode == 0)
         {
             Debug.Log("dialogue!");
@@ -379,6 +379,7 @@ public class DialogueOption : MonoBehaviour
             {
                 dialogueRunner.StartDialogue(dialogueOption.GetNode4());
             }
+            AudioManager.Instance.PlaySFX("inputSuccess");
             dialogueOption = dialogueOption.GetSelection(next);
             finish = true;
         }
@@ -393,11 +394,12 @@ public class DialogueOption : MonoBehaviour
                 countCaptcha++;
                 countWin++;
                 finish = true;
+                AudioManager.Instance.PlaySFX("inputSuccess");
             }
             else
             {
                 Debug.Log("captcha incorrect!");
-
+                AudioManager.Instance.PlaySFX("inputIncorrect");
                 dialogueRunner.StartDialogue("captchaIncorrect");
                 recieveNewOption();
             }
@@ -413,6 +415,7 @@ public class DialogueOption : MonoBehaviour
             if (lineTypingOn == 3) { player.BuffShootingDmg(); }
             if (lineTypingOn == 4) { player.BuffShootingColumn(); }
             finish = true;
+            AudioManager.Instance.PlaySFX("inputSuccess");
         }
         if (mode == 3)
         {
@@ -426,6 +429,7 @@ public class DialogueOption : MonoBehaviour
             if (lineTypingOn == 3) { player.ActivateLaser(); }
             if (lineTypingOn == 4) { player.ActivateHoming(); }
             finish = true;
+            AudioManager.Instance.PlaySFX("inputSuccess");
         }
 
         if (finish)
@@ -480,7 +484,7 @@ public class DialogueOption : MonoBehaviour
 
         Debug.Log("Show option Before: " + vp.sizeDelta);
 
-        vp.sizeDelta = new Vector2(vp.sizeDelta.x, vp.sizeDelta.y - numberOfInputStatic * dialogueOptionHeight);
+        vp.sizeDelta = new Vector2(vp.sizeDelta.x, vp.sizeDelta.y - numberOfInputStatic-1 * dialogueOptionHeight);
 
         Debug.Log("Show option After: " + vp.sizeDelta);
     }

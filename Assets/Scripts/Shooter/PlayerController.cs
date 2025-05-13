@@ -45,6 +45,12 @@ public class PlayerController : MonoBehaviour
                 else if (shootAmt == 3) { 
                     Shoot(3, shootingType);
                 }
+                else if (shootAmt == 4) { 
+                    Shoot(4, shootingType);
+                }
+                else if (shootAmt == 5) { 
+                    Shoot(5, shootingType);
+                }
                 else {
                     Shoot(1, shootingType);
                 }
@@ -62,16 +68,29 @@ public class PlayerController : MonoBehaviour
     {
         switch(i) {
             case 1:
-                Instantiate(bulletPrefab, firePoints[0].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);; 
+                Instantiate(bulletPrefab, firePoints[0].position, Quaternion.identity).GetComponent<Bullet>().SetType(type); 
                 break;
             case 2:
-                Instantiate(bulletPrefab, firePoints[1].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);;
-                Instantiate(bulletPrefab, firePoints[2].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);;
+                Instantiate(bulletPrefab, firePoints[1].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);
+                Instantiate(bulletPrefab, firePoints[2].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);
                 break;
             case 3:
-                Instantiate(bulletPrefab, firePoints[3].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);;
-                Instantiate(bulletPrefab, firePoints[4].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);;
-                Instantiate(bulletPrefab, firePoints[5].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);;
+                Instantiate(bulletPrefab, firePoints[3].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);
+                Instantiate(bulletPrefab, firePoints[4].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);
+                Instantiate(bulletPrefab, firePoints[5].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);
+                break;
+            case 4:
+                Instantiate(bulletPrefab, firePoints[6].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);
+                Instantiate(bulletPrefab, firePoints[7].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);
+                Instantiate(bulletPrefab, firePoints[8].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);
+                Instantiate(bulletPrefab, firePoints[9].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);
+                break;
+            case 5:
+                Instantiate(bulletPrefab, firePoints[6].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);
+                Instantiate(bulletPrefab, firePoints[7].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);
+                Instantiate(bulletPrefab, firePoints[8].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);
+                Instantiate(bulletPrefab, firePoints[9].position, Quaternion.identity).GetComponent<Bullet>().SetType(type);
+                Instantiate(bulletPrefab, firePoints[0].position, Quaternion.identity).GetComponent<Bullet>().SetType(type); 
                 break;
         }
         

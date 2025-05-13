@@ -52,8 +52,8 @@ public class DialogueOption : MonoBehaviour
     [SerializeField] GameObject optionBox4;
 
     List<int> catpachaList = new List<int> { 4, 9, 10, 16, 17, 18 };
-    List<int> upgradeList = new List<int> { 5, 12, 19, 21 };
-    List<int> skillList = new List<int> { 11, 20 };
+    List<int> upgradeList = new List<int> { 5, 12, 19, 21 }; //upgrade 2
+    List<int> skillList = new List<int> { 11, 20 }; //laser 3
     int countCaptcha = 0;
     int countUpgarde = 0;
     int countSkill = 0;

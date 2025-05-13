@@ -208,21 +208,21 @@ title: 18
 <<textmessage "Snow_12" "i’ll spend my limited tokens to give you more">>
 <<textmessage "Snow_12" "it will actually be depressing to lose here">>
 
-<<setOptionActive "3">>
+<<setOptionActive "2">>
 
 ===
 
 title: 19
 ---
-
-<<setOptionActive "2">>
+<<textmessage "Snow_12" "and next">>
+<<setOptionActive "3">>
 
 ===
 
 title: 20
 ---
-
-<<setOptionActive "3">>
+<<textmessage "Snow_12" "aaaannnddd another">>
+<<setOptionActive "2">>
 
 ===
 

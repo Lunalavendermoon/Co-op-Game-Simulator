@@ -37,7 +37,7 @@ title: 3
 <<textmessage "Snow_12" "nooo its making me solve this dumb captcha">>
 <<textmessagecaptcha "Snow_12" "bro help">>
 
-<<setOptionActive "1">>
+<<setOptionActive "2">>
 
 ===
 
@@ -238,7 +238,7 @@ title: 21
 <<setdifficulty "hard">>
 <<increasediff 1>>
 <<wait 30>>
-<<setdifficulty "easy">>
+<<completegame>>
 <<textmessage "Snow_12" "LET’S">>
 <<textmessage "Snow_12" "FREAKING">>
 <<textmessage "Snow_12" "GOOOOOOOO">>
@@ -288,5 +288,15 @@ title: Wait2Secs
 <<textmessage "Username" "now what">>
 
 <<setOptionActive>>
+
+===
+
+title: ShooterFail
+---
+<<textmessage "You" "Oh no uhhhhh">>
+<<textmessage "Username" "what happened?">>
+<<textmessage "You" "I just died-">>
+<<textmessage "Username" "omg noooooooo sorry mb">>
+<<textmessage "Username" "dunno why there's so many tech issues today ToT">>
 
 ===

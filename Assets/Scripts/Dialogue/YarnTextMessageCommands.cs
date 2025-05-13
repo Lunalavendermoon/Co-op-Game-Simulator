@@ -65,4 +65,10 @@ public static class YarnTextMessageCommands
         manager.IncreaseDifficulty(amt);
     }
 
+    [YarnCommand("completegame")]
+    public static void CompleteGame() {
+        var manager = GameObject.FindObjectOfType<ShooterManager>();
+        manager.GameSuccess();
+    }
+
 }

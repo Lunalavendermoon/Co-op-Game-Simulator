@@ -1,11 +1,8 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using Yarn.Unity;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class DialogueOption : MonoBehaviour
 {
@@ -60,13 +57,7 @@ public class DialogueOption : MonoBehaviour
     int countCaptcha = 0;
     int countUpgarde = 0;
     int countSkill = 0;
-
-
-    int inputNum1;
-    int inputNum2;
-    int inputNum3;
-    int inputNum4;
-
+    int inputNum1, inputNum2, inputNum3, inputNum4;
     int countInput = -1;
     int playerInput;
     int optionNumber;
@@ -118,8 +109,6 @@ public class DialogueOption : MonoBehaviour
 
         recieveNewOption();
     }
-
-
     void Inputs(int number)
     {
         playerInput = number;
@@ -268,10 +257,7 @@ public class DialogueOption : MonoBehaviour
                 inputs4[i].text = convertToText(UnityEngine.Random.Range(1, 5));
             }
 
-            inputNum1 = difficulty + 2;
-            inputNum2 = difficulty + 2;
-            inputNum3 = difficulty + 2;
-            inputNum4 = difficulty + 2;
+            inputNum1 = inputNum2 = inputNum3 = inputNum4 = difficulty + 2;
         }
         if (optionNum == 3)
         {
@@ -287,11 +273,6 @@ public class DialogueOption : MonoBehaviour
             inputNum4 = difficulty + 2;
         }
     }
-
-
-
-
-
     string convertToText(int input)
     {
         if (input == 1)        {return "U";}
@@ -368,8 +349,6 @@ public class DialogueOption : MonoBehaviour
         optionBox3.SetActive(false);
         optionBox4.SetActive(false);
     }
-
-
     void campare(int line, TextMeshProUGUI arrowText)
     {
         AudioManager.Instance.PlaySFX("inputCorrect");
@@ -449,9 +428,6 @@ public class DialogueOption : MonoBehaviour
         }
     }
 
-
-
-
     [YarnCommand("setOptionActive")]
     public static void ShowSelection(int newMode)
     {
@@ -488,25 +464,6 @@ public class DialogueOption : MonoBehaviour
         Debug.Log("Show option After: " + vp.sizeDelta);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //void resetField()

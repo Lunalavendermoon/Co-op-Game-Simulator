@@ -415,7 +415,6 @@ public class DialogueOption : MonoBehaviour
 
             dialogueRunner.StartDialogue(skillList[countSkill].ToString());
             Debug.Log("starting dialogue with index " + countSkill + "and number: " + skillList[countSkill].ToString());
-            countUpgarde++;
             countSkill++;
             if (lineTypingOn == 1) { player.ActivateBomb(); }
             if (lineTypingOn == 2) { player.RecoverHealth(); }

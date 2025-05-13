@@ -27,7 +27,7 @@ MonoBehaviour:
   option4: vpn
   node4: 14
   numOfInput4: 2
-  input4: 0100000001000000000000000000000000000000
+  input4: 0100000004000000000000000000000000000000
   nextOptions:
   - {fileID: 0}
   - {fileID: 0}

@@ -27,7 +27,7 @@ MonoBehaviour:
   option4: unplug and replug
   node4: 8
   numOfInput4: 2
-  input4: 0100000001000000000000000000000000000000
+  input4: 0400000002000000000000000000000000000000
   nextOptions:
   - {fileID: 0}
   - {fileID: 0}

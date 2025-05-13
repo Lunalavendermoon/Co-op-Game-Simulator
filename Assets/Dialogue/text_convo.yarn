@@ -37,7 +37,7 @@ title: 3
 <<textmessage "Snow_12" "nooo its making me solve this dumb captcha">>
 <<textmessagecaptcha "Snow_12" "bro help">>
 
-<<setOptionActive "2">>
+<<setOptionActive "1">>
 
 ===
 
@@ -50,7 +50,7 @@ title: 4
 <<textmessage "Snow_12" "ayyy im in">>
 <<textmessage "Snow_12" "here i can send u a buff pick one">>
 
-<<setOptionActive "2">>
+<<setOptionActive "3">>
 
 ===
 
@@ -127,7 +127,7 @@ title: 11
 <<textmessage "Snow_12" "omg i still in the game here lemme give you another buff">>
 <<textmessage "Snow_12" "pick pick">>
 
-<<setOptionActive "2">>
+<<setOptionActive "3">>
 
 ===
 

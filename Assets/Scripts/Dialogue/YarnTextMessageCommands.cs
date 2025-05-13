@@ -50,7 +50,7 @@ public static class YarnTextMessageCommands
             captchaAnswer = 2;
         }
 
-        yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.5f);
     }
 
     [YarnCommand("setdifficulty")]

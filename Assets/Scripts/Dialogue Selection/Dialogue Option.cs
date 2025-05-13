@@ -66,7 +66,7 @@ public class DialogueOption : MonoBehaviour
     bool canInput = false;
     bool finish = false;
     static bool haveClear = true;
-    [SerializeField] static int mode = 0; // mode0 = scritable object mode | mode1 = captcha mode | mode2 = upgrade | mode3 = oneTimeSkill
+    [SerializeField] static int mode = 0; // mode0 = scritable object mode | mode1 = captcha mode | mode2 = upgrade | mode3 = buff
     int lineTypingOn = 0;
     int difficulty = 1;
     int countWin = 0;
@@ -115,41 +115,7 @@ public class DialogueOption : MonoBehaviour
         countInput++;
         compareInput(playerInput);
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.UpArrow) && canInput)          {Inputs(1);}
-        else if (Input.GetKeyDown(KeyCode.DownArrow) && canInput)   {Inputs(2);}
-        else if (Input.GetKeyDown(KeyCode.LeftArrow) && canInput)   {Inputs(3);}
-        else if (Input.GetKeyDown(KeyCode.RightArrow) && canInput)  {Inputs(4);}
-        else if (Input.GetKeyDown(KeyCode.Alpha1))                  { mode = 0; }
-        else if (Input.GetKeyDown(KeyCode.Alpha2))                  { mode = 1; }
-        else if (Input.GetKeyDown(KeyCode.R))                       {SceneManager.LoadScene(0);}
-        else if (Input.GetKeyDown(KeyCode.Space))                   { recieveNewOption(); }
 
-
-        if (!optionPrefab.activeSelf)  {canInput = false;}
-        else                           {canInput = true;}
-
-
-        if (countWin >= 2 && difficulty <= 2)
-        {
-            difficulty++;
-            countWin = 0;
-        }
-
-
-        if (optionNumber >= 1) { optionBox4.SetActive(true); };
-        if (optionNumber >= 2) { optionBox3.SetActive(true); };
-        if (optionNumber >= 3) { optionBox2.SetActive(true); };
-        if (optionNumber >= 4) { optionBox1.SetActive(true); };
-
-        if (optionPrefab.activeSelf && !haveClear)
-        {
-            recieveNewOption();
-            haveClear = true;
-        }
-        numberOfInputStatic = optionNumber;
-    }
 
 
     // update new option
@@ -186,40 +152,80 @@ public class DialogueOption : MonoBehaviour
             optionNumber = dialogueOption.numberOfInput;
             recieveRegularOption();
         }
-        else if (mode == 2)
+
+        else if (mode == 1)
         {
-            optionNumber = 3;
-            option2.text = "Enhance shooting!!!";
-            option3.text = "Enhance damage!!!";
-            option4.text = "Shoot more colum!!!";
-            inputs2[0].text = convertToText(2);
-            inputs3[0].text = convertToText(1);
-            inputs4[0].text = convertToText(4);
-            createRandomInputs(difficulty, 3);
-        }
-        else
-        {
-            if (mode == 1)
-            {
-                option1.text = "1";
-                option2.text = "2";
-                option3.text = "3";
-                option4.text = "skip";
-            }
-            if (mode == 3)
-            {
-                option1.text = "Activate bomb!!!";
-                option2.text = "Recover health!!!";
-                option3.text = "Activate laser!!!";
-                option4.text = "Activate homing!!!";
-            }
+            option1.text = "1";
+            option2.text = "2";
+            option3.text = "3";
+            option4.text = "skip";
+
             optionNumber = 4;
             inputs1[0].text = convertToText(1);
             inputs2[0].text = convertToText(2);
             inputs3[0].text = convertToText(3);
             inputs4[0].text = convertToText(4);
             createRandomInputs(difficulty, 4);
+
         }
+        else
+        {
+            if (mode == 2)
+            {
+                option2.text = "Enhance shooting!!!";
+                option3.text = "Enhance damage!!!";
+                option4.text = "Shoot more colum!!!";
+            }
+            if (mode == 3)
+            {
+                option2.text = "Recover health!!!";
+                option3.text = "Activate laser!!!";
+                option4.text = "Activate homing!!!";
+            }
+            optionNumber = 3;
+            inputs2[0].text = convertToText(2);
+            inputs3[0].text = convertToText(1);
+            inputs4[0].text = convertToText(4);
+            createRandomInputs(difficulty, 3);
+        }
+    }
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow) && canInput) { Inputs(1); }
+        else if (Input.GetKeyDown(KeyCode.DownArrow) && canInput) { Inputs(2); }
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) && canInput) { Inputs(3); }
+        else if (Input.GetKeyDown(KeyCode.RightArrow) && canInput) { Inputs(4); }
+        else if (Input.GetKeyDown(KeyCode.Alpha1)) { mode = 0; }
+        else if (Input.GetKeyDown(KeyCode.Alpha2)) { mode = 1; }
+        else if (Input.GetKeyDown(KeyCode.R)) { SceneManager.LoadScene(0); }
+        else if (Input.GetKeyDown(KeyCode.Space)) { recieveNewOption(); }
+
+
+        if (!optionPrefab.activeSelf) { canInput = false; }
+        else { canInput = true; }
+
+
+        if (countWin >= 2 && difficulty <= 2)
+        {
+            difficulty++;
+            countWin = 0;
+        }
+
+
+
+
+        if (optionPrefab.activeSelf && !haveClear)
+        {
+            recieveNewOption();
+            haveClear = true;
+            if (optionNumber >= 1) { optionBox4.SetActive(true); }
+            if (optionNumber >= 2) { optionBox3.SetActive(true); }
+            if (optionNumber >= 3) { optionBox2.SetActive(true); }
+            if (optionNumber >= 4) { optionBox1.SetActive(true); }
+        }
+        numberOfInputStatic = optionNumber;
     }
 
     void recieveRegularOption()
@@ -334,20 +340,7 @@ public class DialogueOption : MonoBehaviour
             inputSuccess(3);
         } 
         else {return;}
-        
 
-        Debug.Log("Hide option Before: " + messageViewportRect.sizeDelta);
-
-        messageViewportRect.sizeDelta = new Vector2(messageViewportRect.sizeDelta.x,
-                messageViewportRect.sizeDelta.y + numberOfInputStatic * dialogueOptionHeight);
-
-        Debug.Log("Hide option After: " + messageViewportRect.sizeDelta);
-        
-        optionPrefab.SetActive(false);
-        optionBox1.SetActive(false);
-        optionBox2.SetActive(false);
-        optionBox3.SetActive(false);
-        optionBox4.SetActive(false);
     }
     void campare(int line, TextMeshProUGUI arrowText)
     {
@@ -363,6 +356,8 @@ public class DialogueOption : MonoBehaviour
         AudioManager.Instance.PlaySFX("inputSuccess");
         if (mode == 0)
         {
+            Debug.Log("dialogue!");
+
             if (lineTypingOn == 1)
             {
                 dialogueRunner.StartDialogue(dialogueOption.GetNode1());
@@ -384,8 +379,11 @@ public class DialogueOption : MonoBehaviour
         }
         if (mode == 1)
         {
-            if (lineTypingOn == YarnTextMessageCommands.captchaAnswer || YarnTextMessageCommands.captchaValue == 9)
+            Debug.Log("captcha!");
+            Debug.Log(YarnTextMessageCommands.captchaAnswer);
+            if (lineTypingOn == YarnTextMessageCommands.captchaAnswer || YarnTextMessageCommands.captchaValue == 10)
             {
+                Debug.Log("captcha correct!");
                 dialogueRunner.StartDialogue(catpachaList[countCaptcha].ToString());
                 countCaptcha++;
                 countWin++;
@@ -393,12 +391,16 @@ public class DialogueOption : MonoBehaviour
             }
             else
             {
+                Debug.Log("captcha incorrect!");
+
                 dialogueRunner.StartDialogue("captchaIncorrect");
                 recieveNewOption();
             }
         }
         if (mode == 2)
         {
+            Debug.Log("upgrade!");
+
             dialogueRunner.StartDialogue(skillList[countSkill].ToString());
             countSkill++;
             if (lineTypingOn == 2) { player.BuffShootingSpd(); }
@@ -408,6 +410,8 @@ public class DialogueOption : MonoBehaviour
         }
         if (mode == 3)
         {
+            Debug.Log("buff!");
+
             dialogueRunner.StartDialogue(upgradeList[countUpgarde].ToString());
             countUpgarde++;
             if (lineTypingOn == 1) { player.ActivateBomb(); }
@@ -419,11 +423,19 @@ public class DialogueOption : MonoBehaviour
 
         if (finish)
         {
+            Debug.Log("Hide option Before: " + messageViewportRect.sizeDelta);
+
+            messageViewportRect.sizeDelta = new Vector2(messageViewportRect.sizeDelta.x,
+                    messageViewportRect.sizeDelta.y + numberOfInputStatic * dialogueOptionHeight);
+
+            Debug.Log("Hide option After: " + messageViewportRect.sizeDelta);
+        
+
+            optionPrefab.SetActive(false);
             optionBox1.SetActive(false);
             optionBox2.SetActive(false);
             optionBox3.SetActive(false);
             optionBox4.SetActive(false);
-            optionPrefab.SetActive(false);
             finish = false;
         }
     }
@@ -464,31 +476,3 @@ public class DialogueOption : MonoBehaviour
         Debug.Log("Show option After: " + vp.sizeDelta);
     }
 }
-
-
-//void resetField()
-//{
-//    isFirstInput = true;
-//    lineTypingOn = 0;
-//    countInput = -1;
-//    for (int i = 0; i < 5; i++)
-//    {
-//        inputs1[i].color = Color.white;
-//        inputs2[i].color = Color.white;
-//        inputs3[i].color = Color.white;
-//        inputs4[i].color = Color.white;
-//        inputs1[i].text = convertToText(dialogueOption.GetInput1(i));
-//        inputs2[i].text = convertToText(dialogueOption.GetInput2(i));
-//        inputs3[i].text = convertToText(dialogueOption.GetInput3(i));
-//        inputs4[i].text = convertToText(dialogueOption.GetInput4(i));
-
-//        option1.text = dialogueOption.GetOption1();
-//        option2.text = dialogueOption.GetOption2();
-//        option3.text = dialogueOption.GetOption3();
-//        option4.text = dialogueOption.GetOption4();
-//        option1.color = Color.white;
-//        option2.color = Color.white;
-//        option3.color = Color.white;
-//        option4.color = Color.white;
-//    }
-//}

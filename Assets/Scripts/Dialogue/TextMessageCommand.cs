@@ -21,7 +21,7 @@ public class TextMessageCommand : MonoBehaviour
 
     public int usernameCharLimit;
 
-    static string playerName = "You";
+    public static string playerName = "You";
 
     float betweenMessages;
 

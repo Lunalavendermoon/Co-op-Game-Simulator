@@ -31,7 +31,7 @@ public class TextMessageBubble : MonoBehaviour
         Image pfp = profilePic.GetComponent<Image>();
 
         // Align based on sender and set PFP
-        if (sender == "You") {
+        if (sender == TextMessageCommand.playerName) {
             bubbleRect.anchorMin = bubbleRect.anchorMax = new Vector2(1, 1);
             bubbleRect.pivot = new Vector2(1, 1);
             pfp.sprite = playerPfp;

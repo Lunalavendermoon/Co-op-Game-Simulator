@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     {
         AllEnemies.Add(this);
         AllPositions.Add(this, transform.position);
+        maxHealth += ShooterManager.HPbuff;
         currentHealth = maxHealth;
         player = GameObject.FindWithTag("Player")?.GetComponent<PlayerController>();
         animator = GetComponent<Animator>();

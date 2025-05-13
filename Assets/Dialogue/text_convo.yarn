@@ -43,7 +43,6 @@ title: 3
 
 title: 4
 ---
-<<textmessage "You" "correct answer">>
 <<textmessage "You" "that’s literally so easy why r u asking me">>
 <<textmessage "Snow_12" "sry im a bit lazy :p">>
 <<textmessage "Snow_12" "no actually im finding my charger rn">>

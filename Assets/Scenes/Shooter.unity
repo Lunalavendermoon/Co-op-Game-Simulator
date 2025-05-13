@@ -1725,10 +1725,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5811793272351865070, guid: dfb24d46f5126454ab9c35ccd868df78, type: 3}
-      propertyPath: gameover
-      value: 
-      objectReference: {fileID: 8300000, guid: fab61aa272c00c048aadb00bf06984ae, type: 3}
     - target: {fileID: 7378498623202538951, guid: dfb24d46f5126454ab9c35ccd868df78, type: 3}
       propertyPath: m_Name
       value: AudioManager

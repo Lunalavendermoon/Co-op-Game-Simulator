@@ -17,7 +17,7 @@ public static class YarnTextMessageCommands
         var manager = GameObject.FindObjectOfType<TextMessageCommand>();
         manager.SpawnMessage(sender, message);
         AudioManager.Instance.PlaySFX("message");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
     }
 
     [YarnCommand("textmessageimage")]
@@ -26,7 +26,7 @@ public static class YarnTextMessageCommands
         var manager = GameObject.FindObjectOfType<TextMessageCommand>();
         manager.SpawnImageMessage(sender, message, filename);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
     }
 
     [YarnCommand("textmessagecaptcha")]
@@ -54,7 +54,7 @@ public static class YarnTextMessageCommands
             captchaAnswer = 2;
         }
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(2f);
     }
 
     [YarnCommand("setdifficulty")]

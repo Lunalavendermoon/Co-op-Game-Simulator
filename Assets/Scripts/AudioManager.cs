@@ -64,7 +64,7 @@ public class AudioManager : MonoBehaviour
         {
             case "game": bgmSource.clip = game; bgmSource.volume = 0.1f; break;
             case "gameover": bgmSource.clip = gameover; bgmSource.volume = 0.2f; bgmSource.loop = false; break;
-            case "gameWin": bgmSource.clip = gameover; bgmSource.volume = 0.5f; bgmSource.loop = false; break;
+            case "gameWin": bgmSource.clip = gameWin; bgmSource.volume = 0.5f; bgmSource.loop = false; break;
             default: return;
         }
 

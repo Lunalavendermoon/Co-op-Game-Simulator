@@ -286,18 +286,18 @@ public class DialogueOption : MonoBehaviour
     }
     string convertToText(int input)
     {
-        if (input == 1)        {return "¡ü";}
-        else if (input == 2)   {return "¡ı";}
-        else if (input == 3)   {return "¡û";}
-        else if (input == 4)   {return "¡ú";}
+        if (input == 1)        {return "â†‘";}
+        else if (input == 2)   {return "â†“";}
+        else if (input == 3)   {return "â†";}
+        else if (input == 4)   {return "â†’";}
         else                   {return "";}
     }
     int convertToInt(string input)
     {
-        if      (input == "¡ü") { return 1; }
-        else if (input == "¡ı") { return 2; }
-        else if (input == "¡û") { return 3; }
-        else if (input == "¡ú") { return 4; }
+        if      (input == "â†‘") { return 1; }
+        else if (input == "â†“") { return 2; }
+        else if (input == "â†") { return 3; }
+        else if (input == "â†’") { return 4; }
         else                   { return 0; }
     }
 
@@ -484,7 +484,7 @@ public class DialogueOption : MonoBehaviour
 
         Debug.Log("Show option Before: " + vp.sizeDelta);
 
-        vp.sizeDelta = new Vector2(vp.sizeDelta.x, vp.sizeDelta.y - numberOfInputStatic-1 * dialogueOptionHeight);
+        vp.sizeDelta = new Vector2(vp.sizeDelta.x, vp.sizeDelta.y - numberOfInputStatic * dialogueOptionHeight);
 
         Debug.Log("Show option After: " + vp.sizeDelta);
     }

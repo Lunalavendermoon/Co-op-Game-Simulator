@@ -3700,7 +3700,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7571128998973332611, guid: 6298819f227bd804594a430d6548cebb, type: 3}
       propertyPath: m_Padding.m_Bottom
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7599926485430464935, guid: 6298819f227bd804594a430d6548cebb, type: 3}
       propertyPath: m_IsActive

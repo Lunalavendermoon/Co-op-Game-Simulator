@@ -33,7 +33,7 @@ public static class YarnTextMessageCommands
     public static IEnumerator ShowTextMessageCaptcha(string sender, string message)
     {
         captchaValue = captchaList[Random.Range(0, captchaList.Count)];
-        captchaList.RemoveAt(captchaValue-1);
+        captchaList.Remove(captchaValue);
         var manager = GameObject.FindObjectOfType<TextMessageCommand>();
         manager.SpawnImageMessage(sender, message, "Captchas/" + captchaValue);
 
